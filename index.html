@@ -1,0 +1,4584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+name="description"
+content="Fenrir Store - Smartphones, tecnologia e acessórios."
+>
+
+<title>Fenrir Store | Sua loja de celulares</title>
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff;
+    color:#111;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+}
+
+body.modal-open{
+    overflow:hidden;
+}
+
+
+/* =====================================================
+   CORES
+===================================================== */
+
+:root{
+
+    --purple:#1900ff;
+    --purple-dark:#1900ff;
+    --purple-light:#1900ff;
+
+    --black:#09090b;
+    --dark:#111114;
+
+    --gray:#71717a;
+    --light:#f6f6f7;
+
+    --border:#e4e4e7;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+    height:76px;
+
+    background:rgba(255,255,255,.94);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(0,0,0,.07);
+
+    z-index:1000;
+
+}
+
+.header-container{
+
+    max-width:1250px;
+
+    height:100%;
+
+    margin:auto;
+
+    padding:0 25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.logo{
+
+    font-size:24px;
+    font-weight:900;
+
+    color:#111;
+
+}
+
+.logo span{
+    color:var(--purple);
+}
+
+.nav{
+
+    display:flex;
+    gap:30px;
+}
+
+.nav a{
+
+    color:#444;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.nav a:hover{
+    color:var(--purple);
+}
+
+.header-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.search-button{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    border:1px solid var(--border);
+
+    background:white;
+
+    font-size:18px;
+
+}
+
+
+/* =====================================================
+   CARRINHO HEADER
+===================================================== */
+
+.cart-button{
+
+    position:relative;
+
+    height:42px;
+
+    padding:0 15px;
+
+    border:1px solid var(--border);
+
+    background:rgb(214, 101, 8);
+
+    border-radius:7px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.cart-button:hover{
+
+    border-color:var(--purple);
+
+    color:var(--purple);
+
+}
+
+.cart-count{
+
+    min-width:20px;
+    height:20px;
+
+    padding:0 5px;
+
+    background:var(--purple);
+
+    color:rgb(255, 255, 255);
+
+    border-radius:20px;
+
+    font-size:11px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.header-button{
+
+    background:#111;
+
+    color:white;
+
+    border:0;
+
+    padding:12px 20px;
+
+    border-radius:6px;
+
+    font-weight:bold;
+
+}
+
+.header-button:hover{
+
+    background:var(--purple);
+
+}
+
+.menu-button{
+
+    display:none;
+
+    border:0;
+
+    background:none;
+
+    font-size:25px;
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    min-height:730px;
+
+    padding:140px 7% 90px;
+
+    background:
+
+    radial-gradient(
+        circle at 85% 40%,
+        rgba(124,58,237,.28),
+        transparent 30%
+    ),
+
+    linear-gradient(
+        135deg,
+        #050507,
+        #110a1c
+    );
+
+    color:white;
+
+    overflow:hidden;
+
+}
+
+.hero-container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    gap:80px;
+
+}
+
+.hero-content{
+    max-width:600px;
+}
+
+.hero-tag{
+
+    display:inline-flex;
+
+    padding:8px 13px;
+
+    border-radius:30px;
+
+    background:rgba(124,58,237,.15);
+
+    border:1px solid rgba(167,139,250,.25);
+
+    color:#c4b5fd;
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    margin-bottom:25px;
+
+}
+
+.hero h1{
+
+    font-size:clamp(48px,6vw,78px);
+
+    line-height:.98;
+
+    letter-spacing:-4px;
+
+    margin-bottom:25px;
+
+}
+
+.hero h1 span{
+    color:var(--purple-light);
+}
+
+.hero-description{
+
+    color:#a1a1aa;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+    max-width:540px;
+
+    margin-bottom:30px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-bottom:35px;
+
+}
+
+.primary-button{
+
+    border:0;
+
+    background:var(--purple);
+
+    color:white;
+
+    padding:15px 25px;
+
+    border-radius:6px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.primary-button:hover{
+
+    background:#6d28d9;
+
+    transform:translateY(-2px);
+
+}
+
+.secondary-button{
+
+    border:1px solid #3f3f46;
+
+    background:transparent;
+
+    color:white;
+
+    padding:15px 25px;
+
+    border-radius:6px;
+
+    font-weight:bold;
+
+}
+
+.hero-info{
+
+    display:flex;
+
+    gap:25px;
+
+}
+
+.hero-info-item{
+
+    color:#a1a1aa;
+
+    font-size:13px;
+
+}
+
+.hero-product{
+
+    position:relative;
+
+    height:500px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.glow{
+
+    position:absolute;
+
+    width:380px;
+    height:380px;
+
+    background:var(--purple);
+
+    filter:blur(100px);
+
+    opacity:.25;
+
+}
+
+.big-phone{
+
+    position:relative;
+
+    width:250px;
+    height:480px;
+
+    border-radius:42px;
+
+    border:8px solid #25252a;
+
+    background:
+
+    radial-gradient(
+        circle at 35% 25%,
+        #ddd6fe,
+        #7c3aed 35%,
+        #120a20 75%
+    );
+
+    box-shadow:
+
+    0 40px 100px rgba(0,0,0,.5),
+
+    0 0 80px rgba(124,58,237,.35);
+
+    transform:rotate(-7deg);
+
+    animation:phoneFloat 5s ease-in-out infinite;
+
+}
+
+.big-phone::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:80px;
+    height:23px;
+
+    background:#050505;
+
+    border-radius:0 0 15px 15px;
+
+}
+
+@keyframes phoneFloat{
+
+    0%,100%{
+        transform:translateY(0) rotate(-7deg);
+    }
+
+    50%{
+        transform:translateY(-18px) rotate(-4deg);
+    }
+
+}
+
+
+/* =====================================================
+   MARCAS
+===================================================== */
+
+.brands{
+
+    padding:35px 7%;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.brands-container{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+}
+
+.brand{
+
+    color:#71717a;
+
+    font-size:19px;
+
+    font-weight:800;
+
+}
+
+
+/* =====================================================
+   SEÇÕES
+===================================================== */
+
+.section{
+
+    padding:100px 7%;
+
+}
+
+.section-container{
+
+    max-width:1150px;
+
+    margin:auto;
+
+}
+
+.section-header{
+
+    margin-bottom:40px;
+
+}
+
+.section-title small{
+
+    color:var(--purple);
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+}
+
+.section-title h2{
+
+    font-size:45px;
+
+    letter-spacing:-2px;
+
+    margin-top:10px;
+
+}
+
+.section-title p{
+
+    color:var(--gray);
+
+    margin-top:10px;
+
+}
+
+
+/* =====================================================
+   FILTROS
+===================================================== */
+
+.filters{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:30px;
+
+    flex-wrap:wrap;
+
+}
+
+.filter{
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    border:1px solid var(--border);
+
+    background:white;
+
+    color:#555;
+
+    font-size:13px;
+
+    transition:.3s;
+
+}
+
+.filter:hover,
+.filter.active{
+
+    background:#111;
+
+    color:white;
+
+    border-color:#111;
+
+}
+
+
+/* =====================================================
+   PRODUTOS
+===================================================== */
+
+.products{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:18px;
+
+}
+
+.product{
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    background:white;
+
+    transition:.4s;
+
+    cursor:pointer;
+
+}
+
+.product:hover{
+
+    transform:translateY(-7px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.09);
+
+}
+
+.product-image{
+
+    height:280px;
+
+    background:#f4f4f5;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.product-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    transition:.4s;
+
+}
+
+.product:hover .product-image img{
+
+    transform:scale(1.06);
+
+}
+
+.product-placeholder{
+
+    font-size:100px;
+
+}
+
+.product-badge{
+
+    position:absolute;
+
+    top:15px;
+    left:15px;
+
+    background:#111;
+
+    color:white;
+
+    padding:6px 9px;
+
+    border-radius:4px;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    z-index:2;
+
+}
+
+.product-content{
+
+    padding:20px;
+
+}
+
+.product-brand{
+
+    color:var(--purple);
+
+    text-transform:uppercase;
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+}
+
+.product-name{
+
+    font-size:19px;
+
+    margin:7px 0;
+
+}
+
+.product-spec{
+
+    color:#888;
+
+    font-size:12px;
+
+}
+
+.product-bottom{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-top:20px;
+
+}
+
+.product-price{
+
+    font-size:21px;
+
+    font-weight:800;
+
+}
+
+.product-buy{
+
+    width:42px;
+    height:42px;
+
+    border-radius:6px;
+
+    background:#111;
+
+    color:white;
+
+    border:0;
+
+    font-size:20px;
+
+}
+
+.product-buy:hover{
+
+    background:var(--purple);
+
+}
+
+
+/* =====================================================
+   BENEFÍCIOS
+===================================================== */
+
+.benefits{
+    background:#f6f6f7;
+}
+
+.benefit-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:1px;
+
+    background:#ddd;
+
+    border:1px solid #ddd;
+
+}
+
+.benefit{
+
+    background:#f6f6f7;
+
+    padding:35px 25px;
+
+}
+
+.benefit-icon{
+
+    width:45px;
+    height:45px;
+
+    border-radius:8px;
+
+    background:#ede9fe;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:20px;
+
+}
+
+.benefit h3{
+
+    font-size:17px;
+
+    margin-bottom:10px;
+
+}
+
+.benefit p{
+
+    color:#777;
+
+    font-size:13px;
+
+    line-height:1.6;
+
+}
+
+
+/* =====================================================
+   PROMO
+===================================================== */
+
+.promo{
+
+    padding:90px 7%;
+
+}
+
+.promo-container{
+
+    max-width:1150px;
+
+    min-height:360px;
+
+    margin:auto;
+
+    border-radius:15px;
+
+    padding:60px;
+
+    background:
+
+    radial-gradient(
+        circle at 80% 30%,
+        rgba(167,139,250,.35),
+        transparent 30%
+    ),
+
+    linear-gradient(
+        110deg,
+        #111,
+        #271342
+    );
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.promo-content{
+    max-width:600px;
+}
+
+.promo small{
+
+    color:#c4b5fd;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+}
+
+.promo h2{
+
+    font-size:48px;
+
+    letter-spacing:-2px;
+
+    margin:15px 0;
+
+}
+
+.promo p{
+
+    color:#aaa;
+
+    line-height:1.6;
+
+    margin-bottom:25px;
+
+}
+
+.promo-phone{
+
+    font-size:180px;
+
+    transform:rotate(-12deg);
+
+}
+
+
+/* =====================================================
+   AVALIAÇÕES
+===================================================== */
+
+.reviews{
+
+    background:#09090b;
+
+    color:white;
+
+}
+
+.review-container{
+
+    max-width:1000px;
+
+    margin:auto;
+
+}
+
+.review-header{
+
+    text-align:center;
+
+    margin-bottom:50px;
+
+}
+
+.review-header small{
+
+    color:#a78bfa;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+}
+
+.review-header h2{
+
+    font-size:45px;
+
+    margin:12px 0;
+
+}
+
+.review-header p{
+    color:#777;
+}
+
+.review-slider{
+
+    min-height:260px;
+
+}
+
+.review{
+
+    display:none;
+
+    text-align:center;
+
+}
+
+.review.active{
+
+    display:block;
+
+}
+
+.stars{
+
+    color:#facc15;
+
+    font-size:22px;
+
+    margin-bottom:20px;
+
+}
+
+.review-text{
+
+    max-width:800px;
+
+    margin:auto;
+
+    color:#ddd;
+
+    font-size:24px;
+
+    line-height:1.6;
+
+}
+
+.review-name{
+
+    margin-top:25px;
+
+    font-weight:bold;
+
+}
+
+.review-location{
+
+    color:#71717a;
+
+    font-size:12px;
+
+    margin-top:5px;
+
+}
+
+.review-controls{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:30px;
+
+}
+
+.review-control{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    border:1px solid #333;
+
+    background:#111;
+
+    color:white;
+
+}
+
+
+/* =====================================================
+   FAQ
+===================================================== */
+
+.faq{
+
+    max-width:800px;
+
+    margin:auto;
+
+}
+
+.faq-item{
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.faq-question{
+
+    width:100%;
+
+    padding:22px 0;
+
+    background:none;
+
+    border:0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    text-align:left;
+
+}
+
+.faq-question span{
+    color:var(--purple);
+}
+
+.faq-answer{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    transition:.4s;
+
+}
+
+.faq-answer p{
+
+    color:#71717a;
+
+    font-size:14px;
+
+    line-height:1.7;
+
+    padding-bottom:20px;
+
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.final-cta{
+
+    padding:100px 7%;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #4c1d95
+    );
+
+    color:white;
+
+    text-align:center;
+
+}
+
+.final-cta h2{
+
+    font-size:52px;
+
+    letter-spacing:-2px;
+
+    margin-bottom:15px;
+
+}
+
+.final-cta p{
+
+    color:#ddd6fe;
+
+    margin-bottom:30px;
+
+}
+
+.final-button{
+
+    background:white;
+
+    color:#111;
+
+    border:0;
+
+    padding:16px 30px;
+
+    border-radius:6px;
+
+    font-weight:bold;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    background:#050507;
+
+    color:#777;
+
+    padding:60px 7% 25px;
+
+}
+
+.footer-grid{
+
+    max-width:1150px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr 1fr;
+
+    gap:50px;
+
+}
+
+.footer-logo{
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:900;
+
+    margin-bottom:15px;
+
+}
+
+.footer-logo span{
+    color:var(--purple-light);
+}
+
+.footer-description{
+
+    max-width:300px;
+
+    line-height:1.7;
+
+    font-size:13px;
+
+}
+
+footer h4{
+
+    color:white;
+
+    margin-bottom:18px;
+
+}
+
+footer a{
+
+    display:block;
+
+    color:#777;
+
+    font-size:13px;
+
+    margin:12px 0;
+
+}
+
+.footer-bottom{
+
+    max-width:1150px;
+
+    margin:50px auto 0;
+
+    padding-top:25px;
+
+    border-top:1px solid #1d1d22;
+
+    font-size:12px;
+
+}
+
+
+/* =====================================================
+   MODAL DE PRODUTO
+===================================================== */
+
+.modal-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.7);
+
+    backdrop-filter:blur(8px);
+
+    z-index:3000;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+}
+
+.modal-overlay.active{
+
+    display:flex;
+
+}
+
+.product-modal{
+
+    width:min(1000px,100%);
+
+    max-height:90vh;
+
+    overflow:auto;
+
+    background:white;
+
+    border-radius:18px;
+
+    position:relative;
+
+    animation:modalIn .3s ease;
+
+}
+
+@keyframes modalIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px) scale(.97);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+.close-modal{
+
+    position:absolute;
+
+    right:20px;
+
+    top:20px;
+
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    border:0;
+
+    background:#111;
+
+    color:white;
+
+    font-size:20px;
+
+    z-index:5;
+
+}
+
+.modal-content{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+}
+
+.modal-image{
+
+    min-height:560px;
+
+    background:#f4f4f5;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:40px;
+
+}
+
+.modal-image img{
+
+    width:100%;
+
+    max-height:500px;
+
+    object-fit:contain;
+
+}
+
+.modal-placeholder{
+
+    font-size:160px;
+
+}
+
+.modal-info{
+
+    padding:55px 45px;
+
+}
+
+.modal-brand{
+
+    color:var(--purple);
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+}
+
+.modal-info h2{
+
+    font-size:38px;
+
+    margin:10px 0;
+
+    letter-spacing:-1px;
+
+}
+
+.modal-price{
+
+    font-size:30px;
+
+    font-weight:900;
+
+    margin:20px 0 30px;
+
+}
+
+.spec-list{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-bottom:30px;
+
+}
+
+.spec{
+
+    background:#f7f7f8;
+
+    padding:14px;
+
+    border-radius:8px;
+
+}
+
+.spec small{
+
+    display:block;
+
+    color:#888;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    margin-bottom:5px;
+
+}
+
+.spec strong{
+
+    font-size:13px;
+
+}
+
+.modal-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+.modal-cart{
+
+    flex:1;
+
+    border:0;
+
+    background:#111;
+
+    color:white;
+
+    padding:16px;
+
+    border-radius:7px;
+
+    font-weight:bold;
+
+}
+
+.modal-cart:hover{
+
+    background:var(--purple);
+
+}
+
+.modal-buy{
+
+    flex:1;
+
+    border:0;
+
+    background:var(--purple);
+
+    color:white;
+
+    padding:16px;
+
+    border-radius:7px;
+
+    font-weight:bold;
+
+}
+
+
+/* =====================================================
+   CARRINHO
+===================================================== */
+
+.cart-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    z-index:4000;
+
+    display:none;
+
+}
+
+.cart-overlay.active{
+    display:block;
+}
+
+.cart-panel{
+
+    position:absolute;
+
+    top:0;
+    right:0;
+
+    width:min(450px,100%);
+
+    height:100%;
+
+    background:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    animation:cartIn .3s ease;
+
+}
+
+@keyframes cartIn{
+
+    from{
+        transform:translateX(100%);
+    }
+
+    to{
+        transform:translateX(0);
+    }
+
+}
+
+.cart-header{
+
+    padding:25px;
+
+    border-bottom:1px solid var(--border);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.cart-header h2{
+    font-size:22px;
+}
+
+.close-cart{
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    border:1px solid var(--border);
+
+    background:white;
+
+    font-size:18px;
+
+}
+
+.cart-items{
+
+    flex:1;
+
+    overflow:auto;
+
+    padding:20px;
+
+}
+
+.empty-cart{
+
+    text-align:center;
+
+    padding:70px 20px;
+
+    color:#888;
+
+}
+
+.empty-cart-icon{
+
+    font-size:55px;
+
+    margin-bottom:15px;
+
+}
+
+.cart-item{
+
+    display:grid;
+
+    grid-template-columns:75px 1fr auto;
+
+    gap:12px;
+
+    align-items:center;
+
+    padding:15px 0;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.cart-item-image{
+
+    width:75px;
+    height:75px;
+
+    background:#f4f4f5;
+
+    border-radius:8px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+}
+
+.cart-item-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+.cart-item-placeholder{
+    font-size:35px;
+}
+
+.cart-item-name{
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    margin-bottom:5px;
+
+}
+
+.cart-item-price{
+
+    color:#666;
+
+    font-size:12px;
+
+}
+
+.quantity{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:9px;
+
+}
+
+.quantity button{
+
+    width:25px;
+    height:25px;
+
+    border:1px solid var(--border);
+
+    background:white;
+
+    border-radius:4px;
+
+}
+
+.quantity span{
+
+    min-width:18px;
+
+    text-align:center;
+
+    font-size:12px;
+
+}
+
+.remove-item{
+
+    border:0;
+
+    background:none;
+
+    color:#ef4444;
+
+    font-size:18px;
+
+}
+
+.cart-footer{
+
+    border-top:1px solid var(--border);
+
+    padding:22px;
+
+}
+
+.cart-total{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+
+}
+
+.cart-total strong{
+    font-size:22px;
+}
+
+.checkout-button{
+
+    width:100%;
+
+    border:0;
+
+    background:#25d366;
+
+    color:rgb(0, 0, 0);
+
+    padding:17px;
+
+    border-radius:7px;
+
+    font-weight:bold;
+
+    font-size:15px;
+
+}
+
+.clear-cart{
+
+    width:100%;
+
+    margin-top:10px;
+
+    padding:10px;
+
+    border:0;
+
+    background:none;
+
+    color:#888;
+
+    font-size:12px;
+
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+.whatsapp{
+
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    width:58px;
+    height:58px;
+
+    background:#00ff5e;
+
+    color:rgb(255, 255, 255);
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:25px;
+
+    z-index:2000;
+
+    box-shadow:0 8px 25px rgba(18, 2, 238, 0.25);
+
+}
+
+
+/* =====================================================
+   TOP
+===================================================== */
+
+.top{
+
+    position:fixed;
+
+    right:25px;
+    bottom:95px;
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+   /* ============================================================================================================================|
+   Cor do botão ir ao topo da página                                                                                              |
+   ===============================================================================================================================|*/
+    background:#111;
+
+    color:rgb(9, 255, 0);
+
+    border:0;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:1500;
+
+}
+
+.top.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+
+/* =====================================================
+   RESPONSIVO
+===================================================== */
+
+@media(max-width:950px){
+
+    .nav{
+        display:none;
+    }
+
+    .menu-button{
+        display:block;
+    }
+
+    .header-button{
+        display:none;
+    }
+
+    .hero-container{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-description{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons,
+    .hero-info{
+        justify-content:center;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .benefit-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .brands-container{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .promo-container{
+        text-align:center;
+        justify-content:center;
+    }
+
+    .promo-phone{
+        display:none;
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .modal-content{
+        grid-template-columns:1fr;
+    }
+
+    .modal-image{
+        min-height:300px;
+        max-height:350px;
+    }
+
+    .modal-info{
+        padding:30px 25px;
+    }
+
+    .modal-info h2{
+        font-size:30px;
+    }
+
+    .modal-buttons{
+        flex-direction:column;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero{
+        padding-top:120px;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .hero-info{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .hero-product{
+        height:390px;
+    }
+
+    .big-phone{
+        width:190px;
+        height:365px;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .benefit-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-title h2{
+        font-size:36px;
+    }
+
+    .promo-container{
+        padding:40px 25px;
+    }
+
+    .promo h2{
+        font-size:36px;
+    }
+
+    .review-text{
+        font-size:19px;
+    }
+
+    .final-cta h2{
+        font-size:38px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cart-button{
+        padding:0 10px;
+    }
+
+    .cart-button .cart-text{
+        display:none;
+    }
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:30px;
+
+    transform:translate(-50%,30px);
+
+    background:#111;
+
+    color:white;
+
+    padding:14px 20px;
+
+    border-radius:7px;
+
+    font-size:13px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:6000;
+
+}
+
+.toast.show{
+
+    opacity:1;
+
+    transform:translate(-50%,0);
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+<div class="header-container">
+
+
+<a
+href="#inicio"
+class="logo"
+>
+Fenrir <span>Store</span>
+</a>
+
+
+<nav class="nav">
+
+<a href="#inicio">Início</a>
+
+<a href="#produtos">Celulares</a>
+
+<a href="#beneficios">Por que Fenrir?</a>
+
+<a href="#avaliacoes">Avaliações</a>
+
+<a href="#faq">Dúvidas</a>
+
+</nav>
+
+
+<div class="header-actions">
+
+
+<button
+class="search-button"
+onclick="focarBusca()"
+>
+⌕
+</button>
+
+
+<button
+class="cart-button"
+onclick="abrirCarrinho()"
+>
+
+🛒
+
+<span class="cart-text">
+Carrinho
+</span>
+
+<span
+class="cart-count"
+id="cartCount"
+>
+0
+</span>
+
+</button>
+
+
+<button
+class="header-button"
+onclick="abrirWhatsApp()"
+>
+WhatsApp
+</button>
+
+
+<button
+class="menu-button"
+onclick="toggleMenu()"
+>
+☰
+</button>
+
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+class="hero"
+id="inicio"
+>
+
+<div class="hero-container">
+
+
+<div class="hero-content">
+
+
+<div class="hero-tag">
+● Novidades disponíveis
+</div>
+
+
+<h1>
+
+Seu próximo
+celular está
+<span>aqui.</span>
+
+</h1>
+
+
+<p class="hero-description">
+
+Smartphones das principais marcas,
+atendimento especializado e uma experiência
+de compra pensada para você.
+
+</p>
+
+
+<div class="hero-buttons">
+
+<button
+class="primary-button"
+onclick="irProdutos()"
+>
+Ver celulares
+</button>
+
+
+<button
+class="secondary-button"
+onclick="abrirWhatsApp()"
+>
+Falar com especialista
+</button>
+
+</div>
+
+
+<div class="hero-info">
+
+<div class="hero-info-item">
+✓ Compra segura
+</div>
+
+<div class="hero-info-item">
+✓ Atendimento especializado
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="hero-product">
+
+<div class="glow"></div>
+
+<div class="big-phone"></div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MARCAS
+===================================================== -->
+
+<section class="brands">
+
+<div class="brands-container">
+
+<div class="brand">APPLE</div>
+
+<div class="brand">SAMSUNG</div>
+
+<div class="brand">XIAOMI</div>
+
+<div class="brand">MOTOROLA</div>
+
+<div class="brand">REALME</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PRODUTOS
+===================================================== -->
+
+<section
+class="section"
+id="produtos"
+>
+
+<div class="section-container">
+
+
+<div class="section-header">
+
+<div class="section-title">
+
+<small>
+ESCOLHA SEU SMARTPHONE
+</small>
+
+<h2>
+Mais vendidos
+</h2>
+
+<p>
+Clique em qualquer aparelho para ver todos os detalhes.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="filters">
+
+<button
+class="filter active"
+onclick="filtrar('todos',this)"
+>
+Todos
+</button>
+
+<button
+class="filter"
+onclick="filtrar('apple',this)"
+>
+Apple
+</button>
+
+<button
+class="filter"
+onclick="filtrar('samsung',this)"
+>
+Samsung
+</button>
+
+<button
+class="filter"
+onclick="filtrar('xiaomi',this)"
+>
+Xiaomi
+</button>
+
+<button
+class="filter"
+onclick="filtrar('motorola',this)"
+>
+Motorola
+</button>
+
+</div>
+
+
+<div
+class="products"
+id="products"
+>
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BENEFÍCIOS
+===================================================== -->
+
+<section
+class="section benefits"
+id="beneficios"
+>
+
+<div class="section-container">
+
+
+<div class="section-header">
+
+<div class="section-title">
+
+<small>
+POR QUE ESCOLHER A FENRIR
+</small>
+
+<h2>
+Uma compra sem complicação.
+</h2>
+
+<p>
+Tudo pensado para você comprar com confiança.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="benefit-grid">
+
+
+<div class="benefit">
+
+<div class="benefit-icon">✓</div>
+
+<h3>
+Atendimento especializado
+</h3>
+
+<p>
+Nossa equipe ajuda você a encontrar
+o aparelho ideal para seu perfil.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-icon">⚡</div>
+
+<h3>
+Agilidade
+</h3>
+
+<p>
+Atendimento rápido para você não
+perder tempo procurando.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-icon">🔒</div>
+
+<h3>
+Compra segura
+</h3>
+
+<p>
+Transparência e segurança em cada
+etapa da sua experiência.
+</p>
+
+</div>
+
+
+<div class="benefit">
+
+<div class="benefit-icon">❤</div>
+
+<h3>
+Experiência Fenrir
+</h3>
+
+<p>
+Uma loja feita para quem realmente
+gosta de tecnologia.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROMO
+===================================================== -->
+
+<section class="promo">
+
+<div class="promo-container">
+
+<div class="promo-content">
+
+<small>
+FENRIR STORE
+</small>
+
+<h2>
+Seu próximo upgrade começa aqui.
+</h2>
+
+<p>
+Não sabe qual celular escolher?
+Converse com nossa equipe e tenha um atendimento personalizado.
+</p>
+
+<button
+class="primary-button"
+onclick="abrirWhatsApp()"
+>
+Falar com especialista
+</button>
+
+</div>
+
+
+<div class="promo-phone">
+📱
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     AVALIAÇÕES
+===================================================== -->
+
+<section
+class="section reviews"
+id="avaliacoes"
+>
+
+<div class="review-container">
+
+
+<div class="review-header">
+
+<small>
+EXPERIÊNCIA DOS CLIENTES
+</small>
+
+<h2>
+Quem compra, recomenda.
+</h2>
+
+<p>
+Veja o que nossos clientes têm a dizer.
+</p>
+
+</div>
+
+
+<div class="review-slider">
+
+
+<div class="review active">
+
+<div class="stars">
+★★★★★
+</div>
+
+<div class="review-text">
+“Excelente atendimento. Me ajudaram
+a escolher exatamente o celular que
+eu estava procurando.”
+</div>
+
+<div class="review-name">
+Lucas Almeida
+</div>
+
+<div class="review-location">
+Cruzeiro Velho - DF
+</div>
+
+</div>
+
+
+<div class="review">
+
+<div class="stars">
+★★★★★
+</div>
+
+<div class="review-text">
+“Gostei muito da experiência. Atendimento
+rápido e explicaram tudo.”
+</div>
+
+<div class="review-name">
+Marina Costa
+</div>
+
+<div class="review-location">
+Guará - DF
+</div>
+
+</div>
+
+
+<div class="review">
+
+<div class="stars">
+★★★★★
+</div>
+
+<div class="review-text">
+“Com certeza vou comprar novamente.
+Gostei muito da variedade.”
+</div>
+
+<div class="review-name">
+Rafael Mendes
+</div>
+
+<div class="review-location">
+Asa Sul - DF
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="review-controls">
+
+<button
+class="review-control"
+onclick="anterior()"
+>
+←
+</button>
+
+<button
+class="review-control"
+onclick="proxima()"
+>
+→
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section
+class="section"
+id="faq"
+>
+
+<div class="section-container">
+
+
+<div class="section-header">
+
+<div class="section-title">
+
+<small>
+DÚVIDAS
+</small>
+
+<h2>
+Perguntas frequentes.
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="faq">
+
+
+<div class="faq-item">
+
+<button
+class="faq-question"
+onclick="faq(this)"
+>
+
+Quais formas de pagamento vocês aceitam?
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Pix, boleto, cartões de crédito e débito.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button
+class="faq-question"
+onclick="faq(this)"
+>
+
+Os aparelhos possuem garantia?
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Sim. As condições de garantia podem variar
+conforme o produto.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="faq-item">
+
+<button
+class="faq-question"
+onclick="faq(this)"
+>
+
+Vocês ajudam a escolher o celular?
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+<p>
+Sim. Nossa equipe pode recomendar um aparelho de acordo com suas necessidades, orçamento e requisições!
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="final-cta">
+
+<h2>
+Vamos encontrar seu próximo celular?
+</h2>
+
+<p>
+Nossa equipe está pronta para ajudar você.
+</p>
+
+<button
+class="final-button"
+onclick="abrirWhatsApp()"
+>
+Falar com a Fenrir
+</button>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="footer-grid">
+
+
+<div>
+
+<div class="footer-logo">
+Fenrir <span>Store</span>
+</div>
+
+<p class="footer-description">
+
+Smartphones, tecnologia e atendimento
+especializado para você fazer a escolha certa.
+
+</p>
+
+</div>
+
+
+<div>
+
+<h4>Loja</h4>
+
+<a href="#produtos">Celulares</a>
+
+<a href="#beneficios">Por que Fenrir?</a>
+
+<a href="#avaliacoes">Avaliações</a>
+
+</div>
+
+
+<div>
+
+<h4>Atendimento</h4>
+
+<a href="#">WhatsApp</a>
+
+<a href="#">Instagram</a>
+
+<a href="#">Contato</a>
+
+</div>
+
+
+<div>
+
+<h4>Informações</h4>
+
+<a href="#">Termos de uso</a>
+
+<a href="#">Privacidade</a>
+
+<a href="#">Trocas e devoluções</a>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+© 2026 Fenrir Store — Todos os direitos reservados.
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     MODAL PRODUTO
+===================================================== -->
+
+<div
+class="modal-overlay"
+id="productModal"
+onclick="fecharModalFora(event)"
+>
+
+<div class="product-modal">
+
+
+<button
+class="close-modal"
+onclick="fecharProduto()"
+>
+×
+</button>
+
+
+<div class="modal-content">
+
+
+<div class="modal-image">
+
+<img
+id="modalImage"
+src=""
+alt=""
+style="display:none"
+>
+
+<div
+id="modalPlaceholder"
+class="modal-placeholder"
+>
+📱
+</div>
+
+</div>
+
+
+<div class="modal-info">
+
+<div
+class="modal-brand"
+id="modalBrand"
+>
+Apple
+</div>
+
+
+<h2 id="modalName">
+iPhone
+</h2>
+
+
+<p id="modalDescription">
+</p>
+
+
+<div
+class="modal-price"
+id="modalPrice"
+>
+R$ 0
+</div>
+
+
+<div
+class="spec-list"
+id="specList"
+>
+</div>
+
+
+<div class="modal-buttons">
+
+
+<button
+class="modal-cart"
+onclick="adicionarProdutoModal()"
+>
+🛒 Adicionar ao carrinho
+</button>
+
+
+<button
+class="modal-buy"
+onclick="comprarAgora()"
+>
+Comprar agora
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     CARRINHO
+===================================================== -->
+
+<div
+class="cart-overlay"
+id="cartOverlay"
+onclick="fecharCarrinhoFora(event)"
+>
+
+<div class="cart-panel">
+
+
+<div class="cart-header">
+
+<h2>
+Seu carrinho
+</h2>
+
+<button
+class="close-cart"
+onclick="fecharCarrinho()"
+>
+×
+</button>
+
+</div>
+
+
+<div
+class="cart-items"
+id="cartItems"
+>
+</div>
+
+
+<div class="cart-footer">
+
+<div class="cart-total">
+
+<span>
+Total
+</span>
+
+<strong id="cartTotal">
+R$ 0,00
+</strong>
+
+</div>
+
+
+<button
+class="checkout-button"
+onclick="finalizarPedido()"
+>
+💬 Finalizar pedido pelo WhatsApp
+</button>
+
+
+<button
+class="clear-cart"
+onclick="limparCarrinho()"
+>
+Limpar carrinho
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a
+href="https://wa.me/5561998120366"
+target="_blank"
+class="whatsapp"
+>
+💬
+</a>
+
+
+
+<button
+class="top"
+id="top"
+onclick="topo()"
+>
+↑
+</button>
+
+
+<div
+class="toast"
+id="toast"
+>
+Produto adicionado ao carrinho!
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   CONFIGURAÇÃO
+===================================================== */
+
+/*
+   TROQUE PELO SEU NÚMERO.
+
+   Exemplo:
+   5561998120366
+
+   Sem espaços, + ou parênteses.
+*/
+
+const WHATSAPP =
+"5561998120366";
+
+
+/* =====================================================
+   PRODUTOS DA LOJA
+===================================================== */
+
+/*
+   COLOQUE AS FOTOS NA PASTA:
+
+   /imagens/
+
+   Exemplos:
+
+   imagens/iphone-15-pro.jpg
+   imagens/s24-ultra.jpg
+   imagens/redmi-note-13-pro.jpg
+   imagens/motorola-edge-50.jpg
+
+*/
+
+const produtos = [
+
+{
+
+id:1,
+
+nome:"iPhone 15 Pro",
+
+marca:"Apple",
+
+categoria:"apple",
+
+preco:6799,
+
+imagem:"imagens/iphone-15-pro.jpg",
+
+descricao:
+"Um smartphone premium com excelente desempenho, câmera avançada e construção sofisticada.",
+
+especificacoes:{
+
+"Armazenamento":"256 GB",
+
+"RAM":"8 GB",
+
+"Bateria":"3.274 mAh",
+
+"Carregamento":"Até 27W",
+
+"Carregador":"USB-C",
+
+"Tela":'6,1" Super Retina XDR',
+
+"Câmeras":"48 MP + 12 MP + 12 MP",
+
+"Processador":"Apple A17 Pro"
+
+}
+
+},
+
+
+{
+
+id:2,
+
+nome:"Galaxy S24 Ultra",
+
+marca:"Samsung",
+
+categoria:"samsung",
+
+preco:5699,
+
+imagem:"imagens/s24-ultra.jpg",
+
+descricao:
+"Um dos modelos mais avançados da Samsung, com tela grande, câmera de alta resolução e alto desempenho.",
+
+especificacoes:{
+
+"Armazenamento":"512 GB",
+
+"RAM":"12 GB",
+
+"Bateria":"5.000 mAh",
+
+"Carregamento":"Até 45W",
+
+"Carregador":"USB-C",
+
+"Tela":'6,8" Dynamic AMOLED 2X',
+
+"Câmeras":"200 MP + 50 MP + 10 MP + 12 MP",
+
+"Processador":"Snapdragon 8 Gen 3"
+
+}
+
+},
+
+
+{
+
+id:3,
+
+nome:"Redmi Note 13 Pro",
+
+marca:"Xiaomi",
+
+categoria:"xiaomi",
+
+preco:1999,
+
+imagem:"imagens/redmi-note-13-pro.jpg",
+
+descricao:
+"Uma opção equilibrada para quem procura boa tela, câmera e desempenho pelo preço.",
+
+especificacoes:{
+
+"Armazenamento":"256 GB",
+
+"RAM":"8 GB",
+
+"Bateria":"5.000 mAh",
+
+"Carregamento":"Até 67W",
+
+"Carregador":"USB-C",
+
+"Tela":'6,67" AMOLED',
+
+"Câmeras":"200 MP + 8 MP + 2 MP",
+
+"Processador":"MediaTek Dimensity"
+
+}
+
+},
+
+
+{
+
+id:4,
+
+nome:"Motorola Edge 50",
+
+marca:"Motorola",
+
+categoria:"motorola",
+
+preco:2599,
+
+imagem:"imagens/motorola-edge-50.jpg",
+
+descricao:
+"Design sofisticado, tela de alta qualidade e ótimo desempenho para o dia a dia.",
+
+especificacoes:{
+
+"Armazenamento":"256 GB",
+
+"RAM":"12 GB",
+
+"Bateria":"4.500 mAh",
+
+"Carregamento":"68W",
+
+"Carregador":"USB-C",
+
+"Tela":'6,7" pOLED',
+
+"Câmeras":"50 MP + 13 MP + 10 MP",
+
+"Processador":"Snapdragon"
+
+}
+
+}
+
+];
+
+
+/* =====================================================
+   ESTADO
+===================================================== */
+
+let carrinho =
+JSON.parse(
+localStorage.getItem("fenrirCarrinho")
+) || [];
+
+
+let produtoSelecionado = null;
+
+
+/* =====================================================
+   FORMATAÇÃO DE PREÇO
+===================================================== */
+
+function formatarPreco(valor){
+
+    return valor.toLocaleString(
+        "pt-BR",
+        {
+            style:"currency",
+            currency:"BRL"
+        }
+    );
+
+}
+
+
+/* =====================================================
+   RENDERIZAR PRODUTOS
+===================================================== */
+
+function renderizarProdutos(lista = produtos){
+
+    const container =
+    document.getElementById("products");
+
+
+    container.innerHTML = "";
+
+
+    lista.forEach(produto => {
+
+        const card =
+        document.createElement("div");
+
+
+        card.className =
+        "product";
+
+
+        card.dataset.brand =
+        produto.categoria;
+
+
+        card.onclick =
+        () => abrirProduto(produto.id);
+
+
+        card.innerHTML = `
+
+            <div class="product-image">
+
+                <div class="product-badge">
+                    ${produto.id <= 2 ? "DESTAQUE" : "OFERTA"}
+                </div>
+
+                <img
+                    src="${produto.imagem}"
+                    alt="${produto.nome}"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+
+                <div
+                    class="product-placeholder"
+                    style="display:none"
+                >
+                    📱
+                </div>
+
+            </div>
+
+
+            <div class="product-content">
+
+                <div class="product-brand">
+                    ${produto.marca}
+                </div>
+
+                <h3 class="product-name">
+                    ${produto.nome}
+                </h3>
+
+                <p class="product-spec">
+                    ${produto.especificacoes["Armazenamento"]}
+                    •
+                    ${produto.especificacoes["RAM"]} RAM
+                </p>
+
+
+                <div class="product-bottom">
+
+                    <div class="product-price">
+                        ${formatarPreco(produto.preco)}
+                    </div>
+
+                    <button
+                        class="product-buy"
+                        onclick="event.stopPropagation(); adicionarAoCarrinho(${produto.id})"
+                    >
+                        🛒
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   ABRIR PRODUTO
+===================================================== */
+
+function abrirProduto(id){
+
+    const produto =
+    produtos.find(
+        item => item.id === id
+    );
+
+
+    if(!produto) return;
+
+
+    produtoSelecionado =
+    produto;
+
+
+    document.getElementById("modalBrand")
+    .textContent =
+    produto.marca;
+
+
+    document.getElementById("modalName")
+    .textContent =
+    produto.nome;
+
+
+    document.getElementById("modalDescription")
+    .textContent =
+    produto.descricao;
+
+
+    document.getElementById("modalPrice")
+    .textContent =
+    formatarPreco(produto.preco);
+
+
+    const imagem =
+    document.getElementById("modalImage");
+
+
+    const placeholder =
+    document.getElementById("modalPlaceholder");
+
+
+    imagem.src =
+    produto.imagem;
+
+
+    imagem.alt =
+    produto.nome;
+
+
+    imagem.style.display =
+    "block";
+
+
+    placeholder.style.display =
+    "none";
+
+
+    imagem.onerror = function(){
+
+        this.style.display =
+        "none";
+
+        placeholder.style.display =
+        "block";
+
+    };
+
+
+    const specList =
+    document.getElementById("specList");
+
+
+    specList.innerHTML = "";
+
+
+    Object.entries(
+        produto.especificacoes
+    ).forEach(
+        ([nome,valor]) => {
+
+            const spec =
+            document.createElement("div");
+
+
+            spec.className =
+            "spec";
+
+
+            spec.innerHTML = `
+
+                <small>
+                    ${nome}
+                </small>
+
+                <strong>
+                    ${valor}
+                </strong>
+
+            `;
+
+
+            specList.appendChild(spec);
+
+        }
+    );
+
+
+    document
+    .getElementById("productModal")
+    .classList.add("active");
+
+
+    document.body.classList.add("modal-open");
+
+}
+
+
+/* =====================================================
+   FECHAR PRODUTO
+===================================================== */
+
+function fecharProduto(){
+
+    document
+    .getElementById("productModal")
+    .classList.remove("active");
+
+
+    document.body.classList.remove("modal-open");
+
+}
+
+
+function fecharModalFora(event){
+
+    if(
+        event.target.id === "productModal"
+    ){
+
+        fecharProduto();
+
+    }
+
+}
+
+
+/* =====================================================
+   ADICIONAR AO CARRINHO
+===================================================== */
+
+function adicionarAoCarrinho(id){
+
+    const produto =
+    produtos.find(
+        item => item.id === id
+    );
+
+
+    if(!produto) return;
+
+
+    const existente =
+    carrinho.find(
+        item => item.id === id
+    );
+
+
+    if(existente){
+
+        existente.quantidade++;
+
+    }else{
+
+        carrinho.push({
+
+            id:produto.id,
+
+            quantidade:1
+
+        });
+
+    }
+
+
+    salvarCarrinho();
+
+    atualizarCarrinho();
+
+    mostrarToast(
+        produto.nome +
+        " foi adicionado ao carrinho!"
+    );
+
+}
+
+
+/* =====================================================
+   ADICIONAR PRODUTO DO MODAL
+===================================================== */
+
+function adicionarProdutoModal(){
+
+    if(!produtoSelecionado)
+    return;
+
+
+    adicionarAoCarrinho(
+        produtoSelecionado.id
+    );
+
+}
+
+
+/* =====================================================
+   COMPRAR AGORA
+===================================================== */
+
+function comprarAgora(){
+
+    if(!produtoSelecionado)
+    return;
+
+
+    const mensagem =
+
+    `Olá! Tenho interesse em comprar:
+
+📱 ${produtoSelecionado.nome}
+
+💰 ${formatarPreco(produtoSelecionado.preco)}
+
+Gostaria de saber como posso finalizar a compra.`;
+
+
+
+    window.open(
+
+        "https://wa.me/" +
+        WHATSAPP +
+        "?text=" +
+        encodeURIComponent(mensagem),
+
+        "_blank"
+
+    );
+
+}
+
+
+/* =====================================================
+   SALVAR CARRINHO
+===================================================== */
+
+function salvarCarrinho(){
+
+    localStorage.setItem(
+
+        "fenrirCarrinho",
+
+        JSON.stringify(carrinho)
+
+    );
+
+}
+
+
+/* =====================================================
+   ATUALIZAR CARRINHO
+===================================================== */
+
+function atualizarCarrinho(){
+
+    const container =
+    document.getElementById("cartItems");
+
+
+    const contador =
+    document.getElementById("cartCount");
+
+
+    const totalElement =
+    document.getElementById("cartTotal");
+
+
+    let quantidadeTotal = 0;
+
+    let total = 0;
+
+
+    carrinho.forEach(item => {
+
+        quantidadeTotal +=
+        item.quantidade;
+
+
+        const produto =
+        produtos.find(
+            p => p.id === item.id
+        );
+
+
+        if(produto){
+
+            total +=
+            produto.preco *
+            item.quantidade;
+
+        }
+
+    });
+
+
+    contador.textContent =
+    quantidadeTotal;
+
+
+    totalElement.textContent =
+    formatarPreco(total);
+
+
+    if(carrinho.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-cart">
+
+                <div class="empty-cart-icon">
+                    🛒
+                </div>
+
+                <h3>
+                    Seu carrinho está vazio
+                </h3>
+
+                <p>
+                    Adicione alguns celulares
+                    para começar sua compra.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    carrinho.forEach(item => {
+
+        const produto =
+        produtos.find(
+            p => p.id === item.id
+        );
+
+
+        if(!produto) return;
+
+
+        const elemento =
+        document.createElement("div");
+
+
+        elemento.className =
+        "cart-item";
+
+
+        elemento.innerHTML = `
+
+            <div class="cart-item-image">
+
+                <img
+                    src="${produto.imagem}"
+                    alt="${produto.nome}"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                >
+
+                <div
+                    class="cart-item-placeholder"
+                    style="display:none"
+                >
+                    📱
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="cart-item-name">
+                    ${produto.nome}
+                </div>
+
+                <div class="cart-item-price">
+                    ${formatarPreco(produto.preco)}
+                </div>
+
+
+                <div class="quantity">
+
+                    <button
+                        onclick="alterarQuantidade(${produto.id},-1)"
+                    >
+                        −
+                    </button>
+
+                    <span>
+                        ${item.quantidade}
+                    </span>
+
+                    <button
+                        onclick="alterarQuantidade(${produto.id},1)"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="remove-item"
+                onclick="removerDoCarrinho(${produto.id})"
+            >
+                🗑
+            </button>
+
+        `;
+
+
+        container.appendChild(elemento);
+
+    });
+
+}
+
+
+/* =====================================================
+   ALTERAR QUANTIDADE
+===================================================== */
+
+function alterarQuantidade(id,alteracao){
+
+    const item =
+    carrinho.find(
+        produto => produto.id === id
+    );
+
+
+    if(!item) return;
+
+
+    item.quantidade +=
+    alteracao;
+
+
+    if(item.quantidade <= 0){
+
+        carrinho =
+        carrinho.filter(
+            produto => produto.id !== id
+        );
+
+    }
+
+
+    salvarCarrinho();
+
+    atualizarCarrinho();
+
+}
+
+
+/* =====================================================
+   REMOVER DO CARRINHO
+===================================================== */
+
+function removerDoCarrinho(id){
+
+    carrinho =
+    carrinho.filter(
+        item => item.id !== id
+    );
+
+
+    salvarCarrinho();
+
+    atualizarCarrinho();
+
+}
+
+
+/* =====================================================
+   LIMPAR CARRINHO
+===================================================== */
+
+function limparCarrinho(){
+
+    if(carrinho.length === 0)
+    return;
+
+
+    const confirmar =
+    confirm(
+        "Tem certeza que deseja limpar o carrinho?"
+    );
+
+
+    if(!confirmar)
+    return;
+
+
+    carrinho = [];
+
+
+    salvarCarrinho();
+
+    atualizarCarrinho();
+
+}
+
+
+/* =====================================================
+   ABRIR CARRINHO
+===================================================== */
+
+function abrirCarrinho(){
+
+    atualizarCarrinho();
+
+
+    document
+    .getElementById("cartOverlay")
+    .classList.add("active");
+
+}
+
+
+function fecharCarrinho(){
+
+    document
+    .getElementById("cartOverlay")
+    .classList.remove("active");
+
+}
+
+
+function fecharCarrinhoFora(event){
+
+    if(
+        event.target.id === "cartOverlay"
+    ){
+
+        fecharCarrinho();
+
+    }
+
+}
+
+
+/* =====================================================
+   FINALIZAR PEDIDO
+===================================================== */
+
+function finalizarPedido(){
+
+    if(carrinho.length === 0){
+
+        alert(
+            "Seu carrinho está vazio."
+        );
+
+        return;
+
+    }
+
+
+    let mensagem =
+    "Olá! Gostaria de fazer um pedido na Fenrir Store:%0A%0A";
+
+
+    let total = 0;
+
+
+    carrinho.forEach(item => {
+
+        const produto =
+        produtos.find(
+            p => p.id === item.id
+        );
+
+
+        if(!produto) return;
+
+
+        const subtotal =
+        produto.preco *
+        item.quantidade;
+
+
+        total += subtotal;
+
+
+        mensagem +=
+
+        `📱 ${produto.nome}%0A` +
+
+        `Quantidade: ${item.quantidade}%0A` +
+
+        `Valor: ${formatarPreco(subtotal)}%0A%0A`;
+
+    });
+
+
+    mensagem +=
+    `💰 TOTAL: ${formatarPreco(total)}%0A%0A`;
+
+
+    mensagem +=
+    "Gostaria de saber as opções para finalizar a compra.";
+
+
+    window.open(
+
+        "https://wa.me/" +
+        WHATSAPP +
+        "?text=" +
+        mensagem,
+
+        "_blank"
+
+    );
+
+}
+
+
+/* =====================================================
+   FILTROS
+===================================================== */
+
+function filtrar(marca,botao){
+
+    document
+    .querySelectorAll(".filter")
+    .forEach(
+        b => b.classList.remove("active")
+    );
+
+
+    botao.classList.add("active");
+
+
+    if(marca === "todos"){
+
+        renderizarProdutos(
+            produtos
+        );
+
+        return;
+
+    }
+
+
+    renderizarProdutos(
+
+        produtos.filter(
+            produto =>
+            produto.categoria === marca
+        )
+
+    );
+
+}
+
+
+/* =====================================================
+   BUSCA
+===================================================== */
+
+function focarBusca(){
+
+    const termo =
+    prompt(
+        "Digite o nome do celular:"
+    );
+
+
+    if(!termo)
+    return;
+
+
+    const resultado =
+    produtos.find(
+        produto =>
+        produto.nome
+        .toLowerCase()
+        .includes(
+            termo.toLowerCase()
+        )
+    );
+
+
+    if(resultado){
+
+        abrirProduto(
+            resultado.id
+        );
+
+    }else{
+
+        alert(
+            "Não encontramos esse aparelho. Tente outro modelo."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+function abrirWhatsApp(){
+
+    const mensagem =
+    "Olá! Vim pelo site da Fenrir Store e gostaria de conhecer os celulares disponíveis.";
+
+
+    window.open(
+
+        "https://wa.me/" +
+        WHATSAPP +
+        "?text=" +
+        encodeURIComponent(mensagem),
+
+        "_blank"
+
+    );
+
+}
+
+
+/* =====================================================
+   PRODUTOS
+===================================================== */
+
+function irProdutos(){
+
+    document
+    .getElementById("produtos")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================================
+   FAQ
+===================================================== */
+
+function faq(button){
+
+    const answer =
+    button.nextElementSibling;
+
+
+    const aberto =
+    answer.style.maxHeight;
+
+
+    document
+    .querySelectorAll(".faq-answer")
+    .forEach(
+        item =>
+        item.style.maxHeight = null
+    );
+
+
+    document
+    .querySelectorAll(".faq-question span")
+    .forEach(
+        span =>
+        span.textContent = "+"
+    );
+
+
+    if(!aberto){
+
+        answer.style.maxHeight =
+        answer.scrollHeight + "px";
+
+
+        button
+        .querySelector("span")
+        .textContent = "−";
+
+    }
+
+}
+
+
+/* =====================================================
+   AVALIAÇÕES
+===================================================== */
+
+let reviewAtual = 0;
+
+
+const reviews =
+document.querySelectorAll(".review");
+
+
+function mostrarReview(index){
+
+    reviews.forEach(
+        item =>
+        item.classList.remove("active")
+    );
+
+
+    reviews[index]
+    .classList.add("active");
+
+}
+
+
+function proxima(){
+
+    reviewAtual++;
+
+
+    if(
+        reviewAtual >= reviews.length
+    ){
+
+        reviewAtual = 0;
+
+    }
+
+
+    mostrarReview(
+        reviewAtual
+    );
+
+}
+
+
+function anterior(){
+
+    reviewAtual--;
+
+
+    if(reviewAtual < 0){
+
+        reviewAtual =
+        reviews.length - 1;
+
+    }
+
+
+    mostrarReview(
+        reviewAtual
+    );
+
+}
+
+
+setInterval(
+    proxima,
+    5000
+);
+
+
+/* =====================================================
+   TOPO
+===================================================== */
+
+const topButton =
+document.getElementById("top");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if(window.scrollY > 600){
+
+            topButton
+            .classList
+            .add("show");
+
+        }else{
+
+            topButton
+            .classList
+            .remove("show");
+
+        }
+
+    }
+);
+
+
+function topo(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+/* =====================================================
+   MENU MOBILE
+===================================================== */
+
+function toggleMenu(){
+
+    const nav =
+    document.querySelector(".nav");
+
+
+    if(nav.style.display === "flex"){
+
+        nav.style.display =
+        "none";
+
+    }else{
+
+        nav.style.display =
+        "flex";
+
+        nav.style.position =
+        "absolute";
+
+        nav.style.top =
+        "76px";
+
+        nav.style.left =
+        "0";
+
+        nav.style.width =
+        "100%";
+
+        nav.style.padding =
+        "20px";
+
+        nav.style.background =
+        "white";
+
+        nav.style.flexDirection =
+        "column";
+
+    }
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function mostrarToast(texto){
+
+    const toast =
+    document.getElementById("toast");
+
+
+    toast.textContent =
+    texto;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    setTimeout(
+        () =>
+        toast.classList.remove(
+            "show"
+        ),
+        2500
+    );
+
+}
+
+
+/* =====================================================
+   INICIALIZAÇÃO
+===================================================== */
+
+renderizarProdutos();
+
+atualizarCarrinho();
+
+
+/* =====================================================
+   ESC
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(event.key === "Escape"){
+
+            fecharProduto();
+
+            fecharCarrinho();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
