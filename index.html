@@ -839,12 +839,12 @@ body.modal-open{
 
 .product-buy{
 
-    width:42px;
-    height:42px;
+    width:46px;
+    height:46px;
 
-    border-radius:6px;
+    border-radius:8px;
 
-    background:#111;
+    background:#f97316;
 
     color:white;
 
@@ -852,11 +852,19 @@ body.modal-open{
 
     font-size:20px;
 
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:.3s;
+
 }
 
 .product-buy:hover{
 
-    background:var(--purple);
+    background:#ea580c;
+
+    transform:scale(1.08);
 
 }
 
@@ -1014,146 +1022,6 @@ body.modal-open{
     font-size:180px;
 
     transform:rotate(-12deg);
-
-}
-
-
-/* =====================================================
-   AVALIAÇÕES
-===================================================== */
-
-.reviews{
-
-    background:#09090b;
-
-    color:white;
-
-}
-
-.review-container{
-
-    max-width:1000px;
-
-    margin:auto;
-
-}
-
-.review-header{
-
-    text-align:center;
-
-    margin-bottom:50px;
-
-}
-
-.review-header small{
-
-    color:#a78bfa;
-
-    font-weight:bold;
-
-    letter-spacing:2px;
-
-}
-
-.review-header h2{
-
-    font-size:45px;
-
-    margin:12px 0;
-
-}
-
-.review-header p{
-    color:#777;
-}
-
-.review-slider{
-
-    min-height:260px;
-
-}
-
-.review{
-
-    display:none;
-
-    text-align:center;
-
-}
-
-.review.active{
-
-    display:block;
-
-}
-
-.stars{
-
-    color:#facc15;
-
-    font-size:22px;
-
-    margin-bottom:20px;
-
-}
-
-.review-text{
-
-    max-width:800px;
-
-    margin:auto;
-
-    color:#ddd;
-
-    font-size:24px;
-
-    line-height:1.6;
-
-}
-
-.review-name{
-
-    margin-top:25px;
-
-    font-weight:bold;
-
-}
-
-.review-location{
-
-    color:#71717a;
-
-    font-size:12px;
-
-    margin-top:5px;
-
-}
-
-.review-controls{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:10px;
-
-    margin-top:30px;
-
-}
-
-.review-control{
-
-    width:42px;
-    height:42px;
-
-    border-radius:50%;
-
-    border:1px solid #333;
-
-    background:#111;
-
-    color:white;
 
 }
 
@@ -2662,135 +2530,6 @@ Falar com especialista
 </div>
 
 </section>
-
-
-
-<!-- =====================================================
-     AVALIAÇÕES
-===================================================== -->
-
-<section
-class="section reviews"
-id="avaliacoes"
->
-
-<div class="review-container">
-
-
-<div class="review-header">
-
-<small>
-EXPERIÊNCIA DOS CLIENTES
-</small>
-
-<h2>
-Quem compra, recomenda.
-</h2>
-
-<p>
-Veja o que nossos clientes têm a dizer.
-</p>
-
-</div>
-
-
-<div class="review-slider">
-
-
-<div class="review active">
-
-<div class="stars">
-★★★★★
-</div>
-
-<div class="review-text">
-“Excelente atendimento. Me ajudaram
-a escolher exatamente o celular que
-eu estava procurando.”
-</div>
-
-<div class="review-name">
-Lucas Almeida
-</div>
-
-<div class="review-location">
-Cruzeiro Velho - DF
-</div>
-
-</div>
-
-
-<div class="review">
-
-<div class="stars">
-★★★★★
-</div>
-
-<div class="review-text">
-“Gostei muito da experiência. Atendimento
-rápido e explicaram tudo.”
-</div>
-
-<div class="review-name">
-Marina Costa
-</div>
-
-<div class="review-location">
-Guará - DF
-</div>
-
-</div>
-
-
-<div class="review">
-
-<div class="stars">
-★★★★★
-</div>
-
-<div class="review-text">
-“Com certeza vou comprar novamente.
-Gostei muito da variedade.”
-</div>
-
-<div class="review-name">
-Rafael Mendes
-</div>
-
-<div class="review-location">
-Asa Sul - DF
-</div>
-
-</div>
-
-
-</div>
-
-
-<div class="review-controls">
-
-<button
-class="review-control"
-onclick="anterior()"
->
-←
-</button>
-
-<button
-class="review-control"
-onclick="proxima()"
->
-→
-</button>
-
-</div>
-
-
-</div>
-
-</section>
-
-
 
 <!-- =====================================================
      FAQ
