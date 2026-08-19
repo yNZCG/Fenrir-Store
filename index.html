@@ -5,9 +5,9 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Fenrir Store - Smartphones, tecnologia e acessórios.">
+<meta name="description" content="Wolf Tech Store - Smartphones, tecnologia e acessórios.">
 
-<title>Fenrir Store | Sua loja de celulares</title>
+<title>Wolf Tech Store | Sua loja de celulares</title>
 
 <style>
 
@@ -1373,14 +1373,14 @@ footer a{
 
         <!-- Logo com Ícone de Lobo -->
         <a href="#inicio" class="logo">
-            <span class="logo-wolf">🐺</span> Fenrir <span>Store</span>
+            <span class="logo-wolf">🐺</span> Wolf Tech <span>Store</span>
         </a>
 
         <!-- Menu de Navegação (Links sem Avaliações) -->
         <nav class="nav">
             <a href="#inicio">Início</a>
             <a href="#produtos">Celulares</a>
-            <a href="#beneficios">Por que Fenrir?</a>
+            <a href="#beneficios">Por que Wolf Tech?</a>
             <a href="#faq">Dúvidas</a>
         </nav>
 
@@ -1520,7 +1520,7 @@ footer a{
 
         <div class="section-header">
             <div class="section-title">
-                <small>POR QUE ESCOLHER A FENRIR</small>
+                <small>POR QUE ESCOLHER A Wolf Tech</small>
                 <h2>Uma compra sem complicação.</h2>
                 <p>Tudo pensado para você comprar com confiança.</p>
             </div>
@@ -1547,7 +1547,7 @@ footer a{
 
             <div class="benefit">
                 <div class="benefit-icon">❤</div>
-                <h3>Experiência Fenrir</h3>
+                <h3>Experiência Wolf Tech</h3>
                 <p>Uma loja feita para quem realmente gosta de tecnologia.</p>
             </div>
         </div>
@@ -1563,7 +1563,7 @@ footer a{
 <section class="promo">
     <div class="promo-container">
         <div class="promo-content">
-            <small>FENRIR STORE</small>
+            <small>Wolf Tech STORE</small>
             <h2>Seu próximo upgrade começa aqui.</h2>
             <p>Não sabe qual celular escolher? Converse com nossa equipe e tenha um atendimento personalizado.</p>
             <button class="primary-button" onclick="abrirWhatsApp()">
@@ -1638,7 +1638,7 @@ footer a{
     <h2>Vamos encontrar seu próximo celular?</h2>
     <p>Nossa equipe está pronta para ajudar você.</p>
     <button class="final-button" onclick="abrirWhatsApp()">
-        Falar com a Fenrir
+        Falar com a Wolf Tech
     </button>
 </section>
 
@@ -1653,7 +1653,7 @@ footer a{
         <div>
             <!-- Logo no rodapé com ícone de lobo -->
             <div class="footer-logo">
-                <span>🐺</span> Fenrir <span>Store</span>
+                <span>🐺</span> Wolf Tech <span>Store</span>
             </div>
             <p class="footer-description">
                 Smartphones, tecnologia e atendimento especializado para você fazer a escolha certa.
@@ -1663,7 +1663,7 @@ footer a{
         <div>
             <h4>Loja</h4>
             <a href="#produtos">Celulares</a>
-            <a href="#beneficios">Por que Fenrir?</a>
+            <a href="#beneficios">Por que Wolf Tech?</a>
             <a href="#faq">Dúvidas</a>
         </div>
 
@@ -1684,7 +1684,7 @@ footer a{
     </div>
 
     <div class="footer-bottom">
-        © 2026 Fenrir Store — Todos os direitos reservados.
+        © 2026 Wolf Tech Store — Todos os direitos reservados.
     </div>
 </footer>
 
@@ -1967,7 +1967,7 @@ const produtos = [
 ===================================================== */
 
 // Recupera itens do localStorage ou inicializa array vazio
-let carrinho = JSON.parse(localStorage.getItem("fenrirCarrinho")) || [];
+let carrinho = JSON.parse(localStorage.getItem("Wolf TechCarrinho")) || [];
 
 // Guarda temporariamente o produto aberto no Modal
 let produtoSelecionado = null;
@@ -2132,7 +2132,7 @@ function adicionarProdutoModal(){
 
 // Salva o carrinho atual no armazenamento do navegador
 function salvarCarrinho(){
-    localStorage.setItem("fenrirCarrinho", JSON.stringify(carrinho));
+    localStorage.setItem("Wolf TechCarrinho", JSON.stringify(carrinho));
 }
 
 // Atualiza a visualização do carrinho e o contador do cabeçalho
@@ -2282,7 +2282,7 @@ function finalizarPedido(){
         return;
     }
 
-    let mensagem = "Olá! Gostaria de fazer um pedido na Fenrir Store:%0A%0A";
+    let mensagem = "Olá! Gostaria de fazer um pedido na Wolf Tech Store:%0A%0A";
     let total = 0;
 
     carrinho.forEach(item => {
@@ -2306,7 +2306,7 @@ function finalizarPedido(){
 
 // Mensagem genérica para atendimento
 function abrirWhatsApp(){
-    const mensagem = "Olá! Vim pelo site da Fenrir Store e gostaria de conhecer os celulares disponíveis.";
+    const mensagem = "Olá! Vim pelo site da Wolf Tech Store e gostaria de conhecer os celulares disponíveis.";
     window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(mensagem), "_blank");
 }
 
