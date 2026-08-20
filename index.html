@@ -5,9 +5,9 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Wolf Tech - Smartphones, tecnologia e acessórios.">
+<meta name="description" content="Fenrir Store - Smartphones, tecnologia e acessórios.">
 
-<title>Wolf Tech | Sua loja de celulares</title>
+<title>Fenrir Store | Sua loja de celulares</title>
 
 <style>
 
@@ -27,8 +27,10 @@ html{
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#fff;
-    color:#111;
+    /* Fundo em degradê contínuo escuro e elegante para maximizar contraste e legibilidade */
+    background: linear-gradient(135deg, #070714 0%, #0d0d26 50%, #150a2a 100%);
+    background-attachment: fixed;
+    color: #e4e4e7;
 }
 
 button,
@@ -51,26 +53,27 @@ body.modal-open{
 
 
 /* =====================================================
-   VARIÁVEIS DE CORES DO TEMA
+   VARIÁVEIS DE CORES DO TEMA (Ajustadas para alto contraste e legibilidade)
 ===================================================== */
 
 :root{
-    --purple:#1900ff;
-    --purple-dark:#1900ff;
-    --purple-light:#1900ff;
+    --purple:#7c3aed;
+    --purple-dark:#5b21b6;
+    --purple-light:#a78bfa;
 
-    --black:#0c0cd1;
-    --dark:#111114;
+    --black:#05050a;
+    --dark:#0d0d1a;
 
-    --gray:#71717a;
-    --light:#f6f6f7;
+    --gray:#a1a1aa;
+    --light:#f4f4f5;
 
-    --border:#e4e4e7;
+    --border:rgba(255, 255, 255, 0.12);
+    --card-bg:rgba(255, 255, 255, 0.04);
 }
 
 
 /* =====================================================
-   CABEÇALHO (HEADER)
+   CABEÇALHO (HEADER) - Legibilidade Corrigida
 ===================================================== */
 
 .header{
@@ -79,9 +82,9 @@ body.modal-open{
     left:0;
     width:100%;
     height:76px;
-    background:rgba(255,255,255,.94);
+    background:rgba(13, 13, 26, 0.85);
     backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(0,0,0,.07);
+    border-bottom:1px solid var(--border);
     z-index:1000;
 }
 
@@ -99,14 +102,14 @@ body.modal-open{
 .logo{
     font-size:24px;
     font-weight:900;
-    color:#111;
+    color:#ffffff;
     display:flex;
     align-items:center;
     gap:8px;
 }
 
 .logo span{
-    color:var(--purple);
+    color:var(--purple-light);
 }
 
 .logo-wolf{
@@ -119,14 +122,14 @@ body.modal-open{
 }
 
 .nav a{
-    color:#444;
+    color:#d4d4d8;
     font-size:14px;
     font-weight:600;
     transition:.3s;
 }
 
 .nav a:hover{
-    color:var(--purple);
+    color:var(--purple-light);
 }
 
 .header-actions{
@@ -140,8 +143,14 @@ body.modal-open{
     height:42px;
     border-radius:50%;
     border:1px solid var(--border);
-    background:white;
+    background:rgba(255,255,255,0.08);
+    color:white;
     font-size:18px;
+    transition:.3s;
+}
+
+.search-button:hover{
+    background:rgba(255,255,255,0.2);
 }
 
 
@@ -149,12 +158,13 @@ body.modal-open{
    CARRINHO E BOTÕES DO CABEÇALHO
 ===================================================== */
 
+/* Mantido o botão do Carrinho Laranja em Destaque */
 .cart-button{
     position:relative;
     height:42px;
     padding:0 15px;
-    border:1px solid var(--border);
-    background:rgb(214, 101, 8);
+    border:1px solid #ea580c;
+    background:#f97316;
     border-radius:7px;
     display:flex;
     align-items:center;
@@ -165,16 +175,17 @@ body.modal-open{
 }
 
 .cart-button:hover{
-    border-color:var(--purple);
-    color:var(--purple);
+    background:#ea580c;
+    border-color:#c2410c;
+    transform:translateY(-1px);
 }
 
 .cart-count{
     min-width:20px;
     height:20px;
     padding:0 5px;
-    background:var(--purple);
-    color:rgb(255, 255, 255);
+    background:#111;
+    color:#fff;
     border-radius:20px;
     font-size:11px;
     display:flex;
@@ -183,28 +194,30 @@ body.modal-open{
 }
 
 .header-button{
-    background:#111;
+    background:var(--purple);
     color:white;
     border:0;
     padding:12px 20px;
     border-radius:6px;
     font-weight:bold;
+    transition:.3s;
 }
 
 .header-button:hover{
-    background:var(--purple);
+    background:var(--purple-dark);
 }
 
 .menu-button{
     display:none;
     border:0;
     background:none;
+    color:white;
     font-size:25px;
 }
 
 
 /* =====================================================
-   SEÇÃO INICIAL (HERO)
+   SEÇÃO INICIAL (HERO) - Degradê Fluido
 ===================================================== */
 
 .hero{
@@ -213,13 +226,13 @@ body.modal-open{
     background:
     radial-gradient(
         circle at 85% 40%,
-        rgba(124,58,237,.28),
-        transparent 30%
+        rgba(124,58,237,.35),
+        transparent 45%
     ),
-    linear-gradient(
-        135deg,
-        #050507,
-        #110a1c
+    radial-gradient(
+        circle at 15% 20%,
+        rgba(249,115,22,.15),
+        transparent 35%
     );
     color:white;
     overflow:hidden;
@@ -242,8 +255,8 @@ body.modal-open{
     display:inline-flex;
     padding:8px 13px;
     border-radius:30px;
-    background:rgba(124,58,237,.15);
-    border:1px solid rgba(167,139,250,.25);
+    background:rgba(124,58,237,.25);
+    border:1px solid rgba(167,139,250,.4);
     color:#c4b5fd;
     font-size:12px;
     font-weight:bold;
@@ -255,6 +268,7 @@ body.modal-open{
     line-height:.98;
     letter-spacing:-4px;
     margin-bottom:25px;
+    color:#ffffff;
 }
 
 .hero h1 span{
@@ -291,12 +305,17 @@ body.modal-open{
 }
 
 .secondary-button{
-    border:1px solid #3f3f46;
-    background:transparent;
+    border:1px solid rgba(255,255,255,0.2);
+    background:rgba(255,255,255,0.05);
     color:white;
     padding:15px 25px;
     border-radius:6px;
     font-weight:bold;
+    transition:.3s;
+}
+
+.secondary-button:hover{
+    background:rgba(255,255,255,0.15);
 }
 
 .hero-info{
@@ -324,7 +343,7 @@ body.modal-open{
     height:380px;
     background:var(--purple);
     filter:blur(100px);
-    opacity:.25;
+    opacity:.35;
 }
 
 .big-phone{
@@ -341,8 +360,8 @@ body.modal-open{
         #120a20 75%
     );
     box-shadow:
-    0 40px 100px rgba(0,0,0,.5),
-    0 0 80px rgba(124,58,237,.35);
+    0 40px 100px rgba(0,0,0,.6),
+    0 0 80px rgba(124,58,237,.4);
     transform:rotate(-7deg);
     animation:phoneFloat 5s ease-in-out infinite;
     display:flex;
@@ -350,7 +369,7 @@ body.modal-open{
     align-items:center;
 }
 
-/* Notção do celular */
+/* Notação do celular */
 .big-phone::before{
     content:"";
     position:absolute;
@@ -386,7 +405,9 @@ body.modal-open{
 
 .brands{
     padding:35px 7%;
+    border-top:1px solid var(--border);
     border-bottom:1px solid var(--border);
+    background:rgba(0,0,0,0.2);
 }
 
 .brands-container{
@@ -399,9 +420,10 @@ body.modal-open{
 }
 
 .brand{
-    color:#71717a;
+    color:#a1a1aa;
     font-size:19px;
     font-weight:800;
+    letter-spacing:1px;
 }
 
 
@@ -423,7 +445,7 @@ body.modal-open{
 }
 
 .section-title small{
-    color:var(--purple);
+    color:var(--purple-light);
     font-size:12px;
     font-weight:bold;
     letter-spacing:2px;
@@ -433,6 +455,7 @@ body.modal-open{
     font-size:45px;
     letter-spacing:-2px;
     margin-top:10px;
+    color:#ffffff;
 }
 
 .section-title p{
@@ -456,52 +479,57 @@ body.modal-open{
     padding:10px 18px;
     border-radius:30px;
     border:1px solid var(--border);
-    background:white;
-    color:#555;
+    background:rgba(255,255,255,0.05);
+    color:#e4e4e7;
     font-size:13px;
     transition:.3s;
 }
 
 .filter:hover,
 .filter.active{
-    background:#111;
+    background:var(--purple);
     color:white;
-    border-color:#111;
+    border-color:var(--purple);
 }
 
 
 /* =====================================================
-   GRID DE PRODUTOS
+   MOSAICO / GRID DE PRODUTOS
 ===================================================== */
 
 .products{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
+    grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+    gap:22px;
 }
 
 .product{
     border:1px solid var(--border);
-    border-radius:10px;
+    border-radius:16px;
     overflow:hidden;
-    background:white;
-    transition:.4s;
+    background:rgba(255, 255, 255, 0.03);
+    backdrop-filter:blur(10px);
+    transition:.4s ease;
     cursor:pointer;
+    display:flex;
+    flex-direction:column;
 }
 
 .product:hover{
-    transform:translateY(-7px);
-    box-shadow:0 20px 45px rgba(0,0,0,.09);
+    transform:translateY(-8px);
+    border-color:rgba(167, 139, 250, 0.4);
+    box-shadow:0 20px 40px rgba(0,0,0,.5), 0 0 20px rgba(124, 58, 237, 0.2);
 }
 
 .product-image{
-    height:280px;
-    background:#f4f4f5;
+    height:260px;
+    background:rgba(0, 0, 0, 0.25);
     display:flex;
     align-items:center;
     justify-content:center;
     position:relative;
     overflow:hidden;
+    padding:20px;
 }
 
 .product-image img{
@@ -509,11 +537,10 @@ body.modal-open{
     height:100%;
     object-fit:contain;
     transition:.4s;
-    padding:15px;
 }
 
 .product:hover .product-image img{
-    transform:scale(1.06);
+    transform:scale(1.08);
 }
 
 .product-placeholder{
@@ -524,34 +551,40 @@ body.modal-open{
     position:absolute;
     top:15px;
     left:15px;
-    background:#111;
+    background:var(--purple);
     color:white;
-    padding:6px 9px;
-    border-radius:4px;
+    padding:5px 10px;
+    border-radius:6px;
     font-size:10px;
     font-weight:bold;
     z-index:2;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
 }
 
 .product-content{
-    padding:20px;
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    justify-content:space-between;
 }
 
 .product-brand{
-    color:var(--purple);
+    color:var(--purple-light);
     text-transform:uppercase;
-    font-size:10px;
+    font-size:11px;
     font-weight:bold;
     letter-spacing:1px;
 }
 
 .product-name{
-    font-size:19px;
-    margin:7px 0;
+    font-size:18px;
+    color:#ffffff;
+    margin:6px 0;
 }
 
 .product-spec{
-    color:#888;
+    color:#a1a1aa;
     font-size:12px;
 }
 
@@ -560,25 +593,30 @@ body.modal-open{
     align-items:center;
     justify-content:space-between;
     margin-top:20px;
+    padding-top:15px;
+    border-top:1px solid rgba(255,255,255,0.06);
 }
 
 .product-price{
-    font-size:21px;
+    font-size:20px;
     font-weight:800;
+    color:#ffffff;
 }
 
+/* Botão Laranja mantido nos cards */
 .product-buy{
-    width:46px;
-    height:46px;
-    border-radius:8px;
+    width:44px;
+    height:44px;
+    border-radius:10px;
     background:#f97316;
     color:white;
     border:0;
-    font-size:20px;
+    font-size:18px;
     display:flex;
     align-items:center;
     justify-content:center;
     transition:.3s;
+    box-shadow:0 4px 12px rgba(249, 115, 34, 0.3);
 }
 
 .product-buy:hover{
@@ -592,40 +630,43 @@ body.modal-open{
 ===================================================== */
 
 .benefits{
-    background:#f6f6f7;
+    background:rgba(0,0,0,0.15);
 }
 
 .benefit-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:1px;
-    background:#ddd;
-    border:1px solid #ddd;
+    gap:20px;
 }
 
 .benefit{
-    background:#f6f6f7;
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+    border-radius:14px;
     padding:35px 25px;
 }
 
 .benefit-icon{
     width:45px;
     height:45px;
-    border-radius:8px;
-    background:#ede9fe;
+    border-radius:10px;
+    background:rgba(124,58,237,0.2);
+    color:var(--purple-light);
     display:flex;
     align-items:center;
     justify-content:center;
     margin-bottom:20px;
+    font-weight:bold;
 }
 
 .benefit h3{
     font-size:17px;
+    color:#ffffff;
     margin-bottom:10px;
 }
 
 .benefit p{
-    color:#777;
+    color:#a1a1aa;
     font-size:13px;
     line-height:1.6;
 }
@@ -643,18 +684,19 @@ body.modal-open{
     max-width:1150px;
     min-height:360px;
     margin:auto;
-    border-radius:15px;
+    border-radius:20px;
     padding:60px;
+    border:1px solid var(--border);
     background:
     radial-gradient(
         circle at 80% 30%,
-        rgba(167,139,250,.35),
-        transparent 30%
+        rgba(167,139,250,.25),
+        transparent 40%
     ),
     linear-gradient(
         110deg,
-        #111,
-        #271342
+        #0d0d1e,
+        #211138
     );
     color:white;
     display:flex;
@@ -667,7 +709,7 @@ body.modal-open{
 }
 
 .promo small{
-    color:#c4b5fd;
+    color:var(--purple-light);
     font-weight:bold;
     letter-spacing:2px;
 }
@@ -676,10 +718,11 @@ body.modal-open{
     font-size:48px;
     letter-spacing:-2px;
     margin:15px 0;
+    color:#ffffff;
 }
 
 .promo p{
-    color:#aaa;
+    color:#a1a1aa;
     line-height:1.6;
     margin-bottom:25px;
 }
@@ -713,10 +756,11 @@ body.modal-open{
     font-size:16px;
     font-weight:bold;
     text-align:left;
+    color:#ffffff;
 }
 
 .faq-question span{
-    color:var(--purple);
+    color:var(--purple-light);
 }
 
 .faq-answer{
@@ -726,7 +770,7 @@ body.modal-open{
 }
 
 .faq-answer p{
-    color:#71717a;
+    color:#a1a1aa;
     font-size:14px;
     line-height:1.7;
     padding-bottom:20px;
@@ -742,8 +786,8 @@ body.modal-open{
     background:
     linear-gradient(
         135deg,
-        #7c3aed,
-        #4c1d95
+        #5b21b6,
+        #3b0764
     );
     color:white;
     text-align:center;
@@ -767,6 +811,12 @@ body.modal-open{
     padding:16px 30px;
     border-radius:6px;
     font-weight:bold;
+    transition:.3s;
+}
+
+.final-button:hover{
+    background:#e4e4e7;
+    transform:translateY(-2px);
 }
 
 
@@ -775,9 +825,10 @@ body.modal-open{
 ===================================================== */
 
 footer{
-    background:#050507;
-    color:#777;
+    background:#05050a;
+    color:#71717a;
     padding:60px 7% 25px;
+    border-top:1px solid var(--border);
 }
 
 .footer-grid{
@@ -806,6 +857,7 @@ footer{
     max-width:300px;
     line-height:1.7;
     font-size:13px;
+    color:#a1a1aa;
 }
 
 footer h4{
@@ -815,17 +867,23 @@ footer h4{
 
 footer a{
     display:block;
-    color:#777;
+    color:#a1a1aa;
     font-size:13px;
     margin:12px 0;
+    transition:.3s;
+}
+
+footer a:hover{
+    color:var(--purple-light);
 }
 
 .footer-bottom{
     max-width:1150px;
     margin:50px auto 0;
     padding-top:25px;
-    border-top:1px solid #1d1d22;
+    border-top:1px solid rgba(255,255,255,0.08);
     font-size:12px;
+    color:#71717a;
 }
 
 
@@ -836,7 +894,7 @@ footer a{
 .modal-overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.7);
+    background:rgba(0,0,0,.8);
     backdrop-filter:blur(8px);
     z-index:3000;
     display:none;
@@ -853,9 +911,11 @@ footer a{
     width:min(1000px,100%);
     max-height:90vh;
     overflow:auto;
-    background:white;
+    background:#0d0d1e;
+    border:1px solid var(--border);
     border-radius:18px;
     position:relative;
+    color:white;
     animation:modalIn .3s ease;
 }
 
@@ -878,10 +938,15 @@ footer a{
     height:40px;
     border-radius:50%;
     border:0;
-    background:#111;
+    background:rgba(255,255,255,0.1);
     color:white;
     font-size:20px;
     z-index:5;
+    transition:.3s;
+}
+
+.close-modal:hover{
+    background:rgba(255,255,255,0.25);
 }
 
 .modal-content{
@@ -891,7 +956,7 @@ footer a{
 
 .modal-image{
     min-height:560px;
-    background:#f4f4f5;
+    background:rgba(0,0,0,0.3);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -913,7 +978,7 @@ footer a{
 }
 
 .modal-brand{
-    color:var(--purple);
+    color:var(--purple-light);
     font-size:12px;
     font-weight:bold;
     text-transform:uppercase;
@@ -924,12 +989,19 @@ footer a{
     font-size:38px;
     margin:10px 0;
     letter-spacing:-1px;
+    color:#ffffff;
+}
+
+.modal-info p{
+    color:#a1a1aa;
+    line-height:1.6;
 }
 
 .modal-price{
     font-size:30px;
     font-weight:900;
     margin:20px 0 30px;
+    color:#ffffff;
 }
 
 .spec-list{
@@ -940,14 +1012,15 @@ footer a{
 }
 
 .spec{
-    background:#f7f7f8;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
     padding:14px;
     border-radius:8px;
 }
 
 .spec small{
     display:block;
-    color:#888;
+    color:#a1a1aa;
     font-size:10px;
     text-transform:uppercase;
     margin-bottom:5px;
@@ -955,6 +1028,7 @@ footer a{
 
 .spec strong{
     font-size:13px;
+    color:#ffffff;
 }
 
 .modal-buttons{
@@ -965,15 +1039,16 @@ footer a{
 .modal-cart{
     flex:1;
     border:0;
-    background:#111;
+    background:#f97316;
     color:white;
     padding:16px;
     border-radius:7px;
     font-weight:bold;
+    transition:.3s;
 }
 
 .modal-cart:hover{
-    background:var(--purple);
+    background:#ea580c;
 }
 
 .modal-buy{
@@ -984,6 +1059,11 @@ footer a{
     padding:16px;
     border-radius:7px;
     font-weight:bold;
+    transition:.3s;
+}
+
+.modal-buy:hover{
+    background:var(--purple-dark);
 }
 
 
@@ -994,7 +1074,8 @@ footer a{
 .cart-overlay{
     position:fixed;
     inset:0;
-    background:rgba(7, 7, 7, 0.55);
+    background:rgba(0, 0, 0, 0.7);
+    backdrop-filter:blur(4px);
     z-index:4000;
     display:none;
 }
@@ -1009,7 +1090,9 @@ footer a{
     right:0;
     width:min(450px,100%);
     height:100%;
-    background:white;
+    background:#0d0d1e;
+    border-left:1px solid var(--border);
+    color:white;
     display:flex;
     flex-direction:column;
     animation:cartIn .3s ease;
@@ -1041,9 +1124,15 @@ footer a{
     height:38px;
     border-radius:50%;
     border:1px solid var(--border);
-    background:rgb(235, 11, 11);
-    color: white;
+    background:rgba(235, 11, 11, 0.2);
+    color: #ff4d4d;
     font-size:18px;
+    transition:.3s;
+}
+
+.close-cart:hover{
+    background:rgba(235, 11, 11, 0.5);
+    color:white;
 }
 
 .cart-items{
@@ -1055,7 +1144,7 @@ footer a{
 .empty-cart{
     text-align:center;
     padding:70px 20px;
-    color:#888;
+    color:#a1a1aa;
 }
 
 .empty-cart-icon{
@@ -1075,7 +1164,7 @@ footer a{
 .cart-item-image{
     width:75px;
     height:75px;
-    background:#f4f4f5;
+    background:rgba(255,255,255,0.05);
     border-radius:8px;
     display:flex;
     align-items:center;
@@ -1097,10 +1186,11 @@ footer a{
     font-weight:bold;
     font-size:14px;
     margin-bottom:5px;
+    color:#ffffff;
 }
 
 .cart-item-price{
-    color:#666;
+    color:#a1a1aa;
     font-size:12px;
 }
 
@@ -1115,7 +1205,8 @@ footer a{
     width:25px;
     height:25px;
     border:1px solid var(--border);
-    background:white;
+    background:rgba(255,255,255,0.1);
+    color:white;
     border-radius:4px;
 }
 
@@ -1128,7 +1219,7 @@ footer a{
 .remove-item{
     border:0;
     background:none;
-    color:#000000;
+    color:#ef4444;
     font-size:18px;
 }
 
@@ -1146,17 +1237,23 @@ footer a{
 
 .cart-total strong{
     font-size:22px;
+    color:#ffffff;
 }
 
 .checkout-button{
     width:100%;
     border:0;
     background:#25d366;
-    color:rgb(0, 0, 0);
+    color:#000000;
     padding:17px;
     border-radius:7px;
     font-weight:bold;
     font-size:15px;
+    transition:.3s;
+}
+
+.checkout-button:hover{
+    background:#1eb856;
 }
 
 .clear-cart{
@@ -1165,8 +1262,12 @@ footer a{
     padding:10px;
     border:0;
     background:none;
-    color:#888;
+    color:#a1a1aa;
     font-size:12px;
+}
+
+.clear-cart:hover{
+    color:#ef4444;
 }
 
 
@@ -1180,15 +1281,15 @@ footer a{
     bottom:25px;
     width:58px;
     height:58px;
-    background:#00ff5e;
-    color:rgb(255, 255, 255);
+    background:#25d366;
+    color:white;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
     font-size:25px;
     z-index:2000;
-    box-shadow:0 8px 25px rgba(18, 2, 238, 0.25);
+    box-shadow:0 8px 25px rgba(37, 211, 102, 0.3);
 }
 
 .top{
@@ -1198,9 +1299,9 @@ footer a{
     width:42px;
     height:42px;
     border-radius:50%;
-    background:#111;
-    color:rgb(9, 255, 0);
-    border:0;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    border:1px solid var(--border);
     opacity:0;
     pointer-events:none;
     transition:.3s;
@@ -1238,9 +1339,6 @@ footer a{
     .hero-buttons,
     .hero-info{
         justify-content:center;
-    }
-    .products{
-        grid-template-columns:repeat(2,1fr);
     }
     .benefit-grid{
         grid-template-columns:repeat(2,1fr);
@@ -1340,8 +1438,9 @@ footer a{
     left:50%;
     bottom:30px;
     transform:translate(-50%,30px);
-    background:#111;
+    background:#18181b;
     color:white;
+    border:1px solid var(--border);
     padding:14px 20px;
     border-radius:7px;
     font-size:13px;
@@ -1373,14 +1472,14 @@ footer a{
 
         <!-- Logo com Ícone de Lobo -->
         <a href="#inicio" class="logo">
-            <span class="logo-wolf">🐺</span> Wolf Tech
+            <span class="logo-wolf">🐺</span> Fenrir <span>Store</span>
         </a>
 
         <!-- Menu de Navegação (Links sem Avaliações) -->
         <nav class="nav">
             <a href="#inicio">Início</a>
             <a href="#produtos">Celulares</a>
-            <a href="#beneficios">Por que Wolf Tech?</a>
+            <a href="#beneficios">Por que Fenrir?</a>
             <a href="#faq">Dúvidas</a>
         </nav>
 
@@ -1392,7 +1491,7 @@ footer a{
                 ⌕
             </button>
 
-            <!-- Botão do Carrinho -->
+            <!-- Botão do Carrinho (Laranja) -->
             <button class="cart-button" onclick="abrirCarrinho()">
                 🛒
                 <span class="cart-text">Carrinho</span>
@@ -1481,7 +1580,7 @@ footer a{
 
 
 <!-- =====================================================
-     SEÇÃO DE PRODUTOS / CATÁLOGO
+     SEÇÃO DE PRODUTOS / CATÁLOGO (Mosaico)
 ===================================================== -->
 
 <section class="section" id="produtos">
@@ -1504,7 +1603,7 @@ footer a{
             <button class="filter" onclick="filtrar('motorola',this)">Motorola</button>
         </div>
 
-        <!-- Grid onde os produtos são renderizados pelo JavaScript -->
+        <!-- Mosaico de produtos estilo Grid -->
         <div class="products" id="products"></div>
 
     </div>
@@ -1520,7 +1619,7 @@ footer a{
 
         <div class="section-header">
             <div class="section-title">
-                <small>POR QUE ESCOLHER A Wolf Tech</small>
+                <small>POR QUE ESCOLHER A FENRIR</small>
                 <h2>Uma compra sem complicação.</h2>
                 <p>Tudo pensado para você comprar com confiança.</p>
             </div>
@@ -1547,7 +1646,7 @@ footer a{
 
             <div class="benefit">
                 <div class="benefit-icon">❤</div>
-                <h3>Experiência Wolf Tech</h3>
+                <h3>Experiência Fenrir</h3>
                 <p>Uma loja feita para quem realmente gosta de tecnologia.</p>
             </div>
         </div>
@@ -1563,7 +1662,7 @@ footer a{
 <section class="promo">
     <div class="promo-container">
         <div class="promo-content">
-            <small>Wolf Tech</small>
+            <small>FENRIR STORE</small>
             <h2>Seu próximo upgrade começa aqui.</h2>
             <p>Não sabe qual celular escolher? Converse com nossa equipe e tenha um atendimento personalizado.</p>
             <button class="primary-button" onclick="abrirWhatsApp()">
@@ -1638,7 +1737,7 @@ footer a{
     <h2>Vamos encontrar seu próximo celular?</h2>
     <p>Nossa equipe está pronta para ajudar você.</p>
     <button class="final-button" onclick="abrirWhatsApp()">
-        Falar com a Wolf Tech
+        Falar com a Fenrir
     </button>
 </section>
 
@@ -1653,7 +1752,7 @@ footer a{
         <div>
             <!-- Logo no rodapé com ícone de lobo -->
             <div class="footer-logo">
-                <span>🐺</span> Wolf Tech
+                <span>🐺</span> Fenrir <span>Store</span>
             </div>
             <p class="footer-description">
                 Smartphones, tecnologia e atendimento especializado para você fazer a escolha certa.
@@ -1663,7 +1762,7 @@ footer a{
         <div>
             <h4>Loja</h4>
             <a href="#produtos">Celulares</a>
-            <a href="#beneficios">Por que Wolf Tech?</a>
+            <a href="#beneficios">Por que Fenrir?</a>
             <a href="#faq">Dúvidas</a>
         </div>
 
@@ -1684,7 +1783,7 @@ footer a{
     </div>
 
     <div class="footer-bottom">
-        © 2026 Wolf Tech — Todos os direitos reservados.
+        © 2026 Fenrir Store — Todos os direitos reservados.
     </div>
 </footer>
 
@@ -1797,13 +1896,8 @@ const WHATSAPP = "5561998120366";
 
 
 /* =====================================================
-   BANCO DE DADOS DE PRODUTOS (COM NOVOS MODELOS E FOTOS)
+   BANCO DE DADOS DE PRODUTOS
 ===================================================== */
-
-/* 
-   DICA: Você pode alterar os caminhos de 'imagem' para arquivos locais, exemplo:
-   "imagens/iphone-15-pro.jpg"
-*/
 
 const produtos = [
     {
@@ -1882,7 +1976,6 @@ const produtos = [
             "Processador": "Snapdragon 7 Gen 1"
         }
     },
-    /* NOVOS MODELOS ADICIONADOS */
     {
         id: 5,
         nome: "iPhone 13",
@@ -1966,10 +2059,7 @@ const produtos = [
    ESTADO DO APLICATIVO
 ===================================================== */
 
-// Recupera itens do localStorage ou inicializa array vazio
-let carrinho = JSON.parse(localStorage.getItem("Wolf TechCarrinho")) || [];
-
-// Guarda temporariamente o produto aberto no Modal
+let carrinho = JSON.parse(localStorage.getItem("fenrirCarrinho")) || [];
 let produtoSelecionado = null;
 
 
@@ -1998,7 +2088,6 @@ function renderizarProdutos(lista = produtos){
         card.className = "product";
         card.dataset.brand = produto.categoria;
         
-        // Clique no card abre os detalhes do produto
         card.onclick = () => abrirProduto(produto.id);
 
         card.innerHTML = `
@@ -2019,11 +2108,13 @@ function renderizarProdutos(lista = produtos){
             </div>
 
             <div class="product-content">
-                <div class="product-brand">${produto.marca}</div>
-                <h3 class="product-name">${produto.nome}</h3>
-                <p class="product-spec">
-                    ${produto.especificacoes["Armazenamento"]} • ${produto.especificacoes["RAM"]} RAM
-                </p>
+                <div>
+                    <div class="product-brand">${produto.marca}</div>
+                    <h3 class="product-name">${produto.nome}</h3>
+                    <p class="product-spec">
+                        ${produto.especificacoes["Armazenamento"]} • ${produto.especificacoes["RAM"]} RAM
+                    </p>
+                </div>
 
                 <div class="product-bottom">
                     <div class="product-price">${formatarPreco(produto.preco)}</div>
@@ -2047,7 +2138,6 @@ function renderizarProdutos(lista = produtos){
    FUNÇÕES DO MODAL DE PRODUTO
 ===================================================== */
 
-// Abre a janela com as informações detalhadas do produto
 function abrirProduto(id){
     const produto = produtos.find(item => item.id === id);
     if(!produto) return;
@@ -2067,13 +2157,11 @@ function abrirProduto(id){
     imagem.style.display = "block";
     placeholder.style.display = "none";
 
-    // Fallback se a imagem falhar ao carregar
     imagem.onerror = function(){
         this.style.display = "none";
         placeholder.style.display = "block";
     };
 
-    // Renderiza as especificações técnicas
     const specList = document.getElementById("specList");
     specList.innerHTML = "";
 
@@ -2088,13 +2176,11 @@ function abrirProduto(id){
     document.body.classList.add("modal-open");
 }
 
-// Fecha o modal de detalhes do produto
 function fecharProduto(){
     document.getElementById("productModal").classList.remove("active");
     document.body.classList.remove("modal-open");
 }
 
-// Fecha o modal se clicar fora do conteúdo
 function fecharModalFora(event){
     if(event.target.id === "productModal"){
         fecharProduto();
@@ -2106,7 +2192,6 @@ function fecharModalFora(event){
    GERENCIAMENTO DO CARRINHO DE COMPRAS
 ===================================================== */
 
-// Adiciona um item ao carrinho
 function adicionarAoCarrinho(id){
     const produto = produtos.find(item => item.id === id);
     if(!produto) return;
@@ -2124,18 +2209,15 @@ function adicionarAoCarrinho(id){
     mostrarToast(produto.nome + " foi adicionado ao carrinho!");
 }
 
-// Adiciona ao carrinho usando o botão dentro do Modal
 function adicionarProdutoModal(){
     if(!produtoSelecionado) return;
     adicionarAoCarrinho(produtoSelecionado.id);
 }
 
-// Salva o carrinho atual no armazenamento do navegador
 function salvarCarrinho(){
-    localStorage.setItem("Wolf TechCarrinho", JSON.stringify(carrinho));
+    localStorage.setItem("fenrirCarrinho", JSON.stringify(carrinho));
 }
 
-// Atualiza a visualização do carrinho e o contador do cabeçalho
 function atualizarCarrinho(){
     const container = document.getElementById("cartItems");
     const contador = document.getElementById("cartCount");
@@ -2155,7 +2237,6 @@ function atualizarCarrinho(){
     contador.textContent = quantidadeTotal;
     totalElement.textContent = formatarPreco(total);
 
-    // Caso o carrinho esteja vazio
     if(carrinho.length === 0){
         container.innerHTML = `
             <div class="empty-cart">
@@ -2169,7 +2250,6 @@ function atualizarCarrinho(){
 
     container.innerHTML = "";
 
-    // Renderiza cada item presente no carrinho
     carrinho.forEach(item => {
         const produto = produtos.find(p => p.id === item.id);
         if(!produto) return;
@@ -2207,7 +2287,6 @@ function atualizarCarrinho(){
     });
 }
 
-// Altera a quantidade de um item no carrinho (+1 ou -1)
 function alterarQuantidade(id, alteracao){
     const item = carrinho.find(produto => produto.id === id);
     if(!item) return;
@@ -2222,14 +2301,12 @@ function alterarQuantidade(id, alteracao){
     atualizarCarrinho();
 }
 
-// Remove totalmente um item do carrinho
 function removerDoCarrinho(id){
     carrinho = carrinho.filter(item => item.id !== id);
     salvarCarrinho();
     atualizarCarrinho();
 }
 
-// Esvazia todo o carrinho
 function limparCarrinho(){
     if(carrinho.length === 0) return;
     if(!confirm("Tem certeza que deseja limpar o carrinho?")) return;
@@ -2239,7 +2316,6 @@ function limparCarrinho(){
     atualizarCarrinho();
 }
 
-// Abre/Fecha a barra lateral do carrinho
 function abrirCarrinho(){
     atualizarCarrinho();
     document.getElementById("cartOverlay").classList.add("active");
@@ -2260,7 +2336,6 @@ function fecharCarrinhoFora(event){
    INTEGRAÇÃO COM WHATSAPP
 ===================================================== */
 
-// Direciona o produto do Modal diretamente para o WhatsApp
 function comprarAgora(){
     if(!produtoSelecionado) return;
 
@@ -2275,14 +2350,13 @@ Gostaria de saber como posso finalizar a compra.`;
     window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(mensagem), "_blank");
 }
 
-// Envia a lista completa de compras do carrinho via mensagem no WhatsApp
 function finalizarPedido(){
     if(carrinho.length === 0){
         alert("Seu carrinho está vazio.");
         return;
     }
 
-    let mensagem = "Olá! Gostaria de fazer um pedido na Wolf Tech:%0A%0A";
+    let mensagem = "Olá! Gostaria de fazer um pedido na Fenrir Store:%0A%0A";
     let total = 0;
 
     carrinho.forEach(item => {
@@ -2304,9 +2378,8 @@ function finalizarPedido(){
     window.open("https://wa.me/" + WHATSAPP + "?text=" + mensagem, "_blank");
 }
 
-// Mensagem genérica para atendimento
 function abrirWhatsApp(){
-    const mensagem = "Olá! Vim pelo site da Wolf Tech e gostaria de conhecer os celulares disponíveis.";
+    const mensagem = "Olá! Vim pelo site da Fenrir Store e gostaria de conhecer os celulares disponíveis.";
     window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(mensagem), "_blank");
 }
 
@@ -2315,7 +2388,6 @@ function abrirWhatsApp(){
    FILTROS E BUSCA
 ===================================================== */
 
-// Filtra produtos pela marca/categoria
 function filtrar(marca, botao){
     document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
     botao.classList.add("active");
@@ -2328,7 +2400,6 @@ function filtrar(marca, botao){
     renderizarProdutos(produtos.filter(produto => produto.categoria === marca));
 }
 
-// Pesquisa simples por texto
 function focarBusca(){
     const termo = prompt("Digite o nome do celular:");
     if(!termo) return;
@@ -2349,12 +2420,10 @@ function focarBusca(){
    FUNÇÕES AUXILIARES E NAVEGAÇÃO
 ===================================================== */
 
-// Rola suavemente até a seção de produtos
 function irProdutos(){
     document.getElementById("produtos").scrollIntoView({ behavior: "smooth" });
 }
 
-// Controla o Sanfona/Accordion das Perguntas Frequentes (FAQ)
 function faq(button){
     const answer = button.nextElementSibling;
     const aberto = answer.style.maxHeight;
@@ -2368,7 +2437,6 @@ function faq(button){
     }
 }
 
-// Exibe/oculta o botão de Voltar ao Topo de acordo com a rolagem da tela
 const topButton = document.getElementById("top");
 
 window.addEventListener("scroll", () => {
@@ -2383,7 +2451,6 @@ function topo(){
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// Alterna o menu mobile
 function toggleMenu(){
     const nav = document.querySelector(".nav");
     if(nav.style.display === "flex"){
@@ -2395,12 +2462,11 @@ function toggleMenu(){
         nav.style.left = "0";
         nav.style.width = "100%";
         nav.style.padding = "20px";
-        nav.style.background = "white";
+        nav.style.background = "#0d0d1e";
         nav.style.flexDirection = "column";
     }
 }
 
-// Exibe a notificação tipo Toast no rodapé
 function mostrarToast(texto){
     const toast = document.getElementById("toast");
     toast.textContent = texto;
@@ -2414,11 +2480,9 @@ function mostrarToast(texto){
    INICIALIZAÇÃO DO SISTEMA
 ===================================================== */
 
-// Inicializa a renderização inicial dos produtos e estado do carrinho
 renderizarProdutos();
 atualizarCarrinho();
 
-// Permite fechar modais ao pressionar a tecla ESC
 document.addEventListener("keydown", event => {
     if(event.key === "Escape"){
         fecharProduto();
