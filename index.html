@@ -106,10 +106,10 @@ body.light-theme {
 }
 
 .header-container{
-    max-width: 100%; /* Ocupa toda a largura do container */
+    max-width: 100%;
     height:100%;
     margin:auto;
-    padding:0 30px; /* Alinhado ao canto com margem de respiro */
+    padding:0 30px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -135,7 +135,7 @@ body.light-theme {
 .nav{
     display:flex;
     gap:25px;
-    margin-left: 40px; /* Dá espaço após a logo */
+    margin-left: 40px;
 }
 
 .nav a{
@@ -153,12 +153,12 @@ body.light-theme {
     display:flex;
     align-items:center;
     gap:15px;
-    margin-left: auto; /* Empurra todo o bloco de busca, tema, WhatsApp e carrinho para o canto direito */
+    margin-left: auto;
 }
 
 
 /* =====================================================
-   BARRA DE BUSCA EM TEMPO REAL
+   BARRA DE BUSCA EM TEMPO REAL (CORRIGIDO PARA PERMITIR CLIQUE)
 ===================================================== */
 
 .search-box {
@@ -168,6 +168,8 @@ body.light-theme {
 }
 
 .search-input {
+    position: relative;
+    z-index: 1;
     background: var(--input-bg);
     border: 1px solid var(--border);
     border-radius: 20px;
@@ -189,7 +191,8 @@ body.light-theme {
     left: 12px;
     font-size: 14px;
     color: var(--text-muted);
-    pointer-events: none;
+    pointer-events: none; /* Garante que o clique passe para o input */
+    z-index: 2;
 }
 
 
@@ -1554,7 +1557,7 @@ footer a:hover{
             <a href="#faq">Dúvidas</a>
         </nav>
 
-        <!-- Ações do Cabeçalho (Alinhadas ao canto direito extremo) -->
+        <!-- Ações do Cabeçalho -->
         <div class="header-actions">
 
             <!-- Campo de Busca em Tempo Real -->
@@ -1579,7 +1582,7 @@ footer a:hover{
                 WhatsApp
             </button>
 
-            <!-- Botão do Carrinho (No Canto Direito) -->
+            <!-- Botão do Carrinho -->
             <button class="cart-button" onclick="abrirCarrinho()">
                 🛒
                 <span class="cart-text">Carrinho</span>
@@ -1619,9 +1622,6 @@ footer a:hover{
             </p>
 
             <div class="hero-buttons">
-                <button class="primary-button" onclick="irProdutos()">
-                    Ver celulares
-                </button>
 
                 <button class="secondary-button" onclick="abrirWhatsApp()">
                     Falar com especialista
@@ -1977,31 +1977,12 @@ const WHATSAPP = "5561998120366";
 
 const produtos = [
     {
-        id: 1,
-        nome: "iPhone 15 Pro",
-        marca: "Apple",
-        categoria: "apple",
-        preco: 6799,
-        imagem: "https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80",
-        descricao: "Um smartphone premium com excelente desempenho, câmera avançada e construção sofisticada em titânio.",
-        especificacoes: {
-            "Armazenamento": "256 GB",
-            "RAM": "8 GB",
-            "Bateria": "3.274 mAh",
-            "Carregamento": "Até 27W",
-            "Carregador": "USB-C",
-            "Tela": '6,1" Super Retina XDR',
-            "Câmeras": "48 MP + 12 MP + 12 MP",
-            "Processador": "Apple A17 Pro"
-        }
-    },
-    {
         id: 2,
         nome: "Galaxy S24 Ultra",
         marca: "Samsung",
         categoria: "samsung",
         preco: 5699,
-        imagem: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80",
+        imagem: "https://api.store.vivo.com.br/medias/96Wx96H-TGSA517R-app-.jpg?context=bWFzdGVyfHByb2R1Y3RpbWFnZXN8MTkyMTR8aW1hZ2UvanBlZ3xhRFptTDJnd1l5OHhNREE1TkRneE5qQTJOell4TkM4NU5sZDRPVFpJWDFSSFUwRTFNVGRTSUY4Z0tHRndjQ2t1YW5Cbnw0NGYzZWIwOTczZGVjZjhiZDRjMWI4ZDUxOWViZjRlNTEyYTllOTExOGMyZThiYzBlZGVmYjA1YzEyZWU2YTZl",
         descricao: "Um dos modelos mais avançados da Samsung, com tela grande, câmera de alta resolução, caneta S-Pen e Galaxy AI.",
         especificacoes: {
             "Armazenamento": "512 GB",
@@ -2020,7 +2001,7 @@ const produtos = [
         marca: "Xiaomi",
         categoria: "xiaomi",
         preco: 1999,
-        imagem: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&auto=format&fit=crop&q=80",
+        imagem: "https://images.kabum.com.br/produtos/fotos/sync_mirakl/616063/Smartphone-Xiaomi-Redmi-Note-13-Pro-5G-256GB-8GB-RAM-Camera-200MP-8MP-Frontal-16GB-Tela-6-67-120Hz-Dual-Sim-Preto_1723553169_gg.jpg",
         descricao: "Uma opção equilibrada para quem procura boa tela, excelente câmera de 200 MP e alto desempenho custo-benefício.",
         especificacoes: {
             "Armazenamento": "256 GB",
@@ -2039,7 +2020,7 @@ const produtos = [
         marca: "Motorola",
         categoria: "motorola",
         preco: 2599,
-        imagem: "https://images.unsplash.com/photo-1546054454-aa26e2b734c7?w=600&auto=format&fit=crop&q=80",
+        imagem: "https://fujiokadistribuidor.vteximg.com.br/arquivos/ids/422746",
         descricao: "Design sofisticado com acabamento em couro vegano, tela pOLED curva de alta qualidade e carregamento ultra rápido.",
         especificacoes: {
             "Armazenamento": "256 GB",
@@ -2058,7 +2039,7 @@ const produtos = [
         marca: "Apple",
         categoria: "apple",
         preco: 3899,
-        imagem: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=600&auto=format&fit=crop&q=80",
+        imagem: "https://acdn-us.mitiendanube.com/stores/005/392/347/products/054d4c50a995620a198d0c24f8cb886f-602cd012e8278df3be17333628782435-1024-1024.webp",
         descricao: "Um clássico da Apple com ótima duração de bateria, sistema de câmera dupla e chip A15 Bionic super veloz.",
         especificacoes: {
             "Armazenamento": "128 GB",
@@ -2073,11 +2054,68 @@ const produtos = [
     },
     {
         id: 6,
+        nome: "iPhone 14",
+        marca: "Apple",
+        categoria: "apple",
+        preco: 3899,
+        imagem: "https://carrefourbr.vtexassets.com/arquivos/ids/183180388/image-0.jpg?v=638740170180500000",
+        descricao: "Um clássico da Apple com ótima duração de bateria, sistema de câmera dupla e chip A15 Bionic super veloz.",
+        especificacoes: {
+            "Armazenamento": "128 GB",
+            "RAM": "4 GB",
+            "Bateria": "3.227 mAh",
+            "Carregamento": "Até 20W",
+            "Carregador": "Lightning",
+            "Tela": '6,1" Super Retina XDR',
+            "Câmeras": "12 MP + 12 MP",
+            "Processador": "Apple A15 Bionic"
+        }
+    },
+    {
+        id: 7,
+        nome: "iPhone 15",
+        marca: "Apple",
+        categoria: "apple",
+        preco: 6799,
+        imagem: "https://kedcell.odoo.com/web/image/product.template/2141/image_1920?unique=299ced8",
+        descricao: "Um smartphone premium com excelente desempenho, câmera avançada e construção sofisticada em titânio.",
+        especificacoes: {
+            "Armazenamento": "256 GB",
+            "RAM": "8 GB",
+            "Bateria": "3.274 mAh",
+            "Carregamento": "Até 27W",
+            "Carregador": "USB-C",
+            "Tela": '6,1" Super Retina XDR',
+            "Câmeras": "48 MP + 12 MP + 12 MP",
+            "Processador": "Apple A17 Pro"
+        }
+    },
+    {
+        id: 8,
+        nome: "iPhone 15 Pro Max",
+        marca: "Apple",
+        categoria: "apple",
+        preco: 3899,
+        imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ821J4Fcpq6wp6HfOKEHi05aR7wwZbQvYNl9y3fZ8BT3DQ6DIRfHxsE0U&s=10",
+        descricao: "Um clássico da Apple com ótima duração de bateria, sistema de câmera dupla e chip A15 Bionic super veloz.",
+        especificacoes: {
+            "Armazenamento": "128 GB",
+            "RAM": "4 GB",
+            "Bateria": "3.227 mAh",
+            "Carregamento": "Até 20W",
+            "Carregador": "Lightning",
+            "Tela": '6,1" Super Retina XDR',
+            "Câmeras": "12 MP + 12 MP",
+            "Processador": "Apple A15 Bionic"
+        }
+    },
+    {
+        id: 9,
         nome: "Galaxy A55 5G",
         marca: "Samsung",
         categoria: "samsung",
         preco: 2199,
-        imagem: "https://images.unsplash.com/photo-1580910051074-3eb694886505?w=600&auto=format&fit=crop&q=80",
+        imagem: "https://http2.mlstatic.com/D_NQ_NP_2X_848050-MLA99992132387_112025-F.webp",
         descricao: "Intermediário premium da Samsung com proteção contra água IP67, traseira em vidro e fotos incríveis à noite.",
         especificacoes: {
             "Armazenamento": "256 GB",
@@ -2091,12 +2129,12 @@ const produtos = [
         }
     },
     {
-        id: 7,
+        id: 10,
         nome: "POCO X6 Pro",
         marca: "Xiaomi",
         categoria: "xiaomi",
         preco: 2399,
-        imagem: "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=600&auto=format&fit=crop&q=80",
+        imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk22oE_Zzrr-EtJD_od7_SmBdHve7PDCamZbwPrjuwIg&s=10",
         descricao: "Celular focado em desempenho bruto e jogos, acompanhado de tela AMOLED de 120Hz e carregamento de 67W.",
         especificacoes: {
             "Armazenamento": "512 GB",
@@ -2110,12 +2148,12 @@ const produtos = [
         }
     },
     {
-        id: 8,
+        id: 11,
         nome: "Moto G84 5G",
         marca: "Motorola",
         categoria: "motorola",
         preco: 1499,
-        imagem: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600&auto=format&fit=crop&q=80",
+        imagem: "https://m.magazineluiza.com.br/a-static/420x420/smartphone-motorola-moto-g84-5g-256gb-16gb-8gb-ram-8gb-ram-boost-50mp-ultrapixel-ai-camera-tela-poled-nfc-azul-claro/europarttsbrasilltda/g84azulclaro256gb/c364a14aa8a9397225e2e7b95889e708.jpeg",
         descricao: "Excelente custo-benefício com tela pOLED impressionante, 256GB de espaço e câmera com estabilização óptica.",
         especificacoes: {
             "Armazenamento": "256 GB",
