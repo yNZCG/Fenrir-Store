@@ -2306,6 +2306,14 @@ function buscarProdutos(termo) {
     renderizarProdutos(produtosFiltrados);
 }
 
+// Evento para rolar a tela até os produtos ao pressionar ENTER na busca
+document.getElementById("searchInput").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        irProdutos();
+    }
+});
+
 function filtrar(marca, botao){
     document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
     botao.classList.add("active");
