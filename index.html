@@ -27,10 +27,10 @@ html{
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    /* Fundo em degradê contínuo escuro e elegante para maximizar contraste e legibilidade */
-    background: linear-gradient(135deg, #070714 0%, #0d0d26 50%, #150a2a 100%);
+    background: var(--bg-main);
     background-attachment: fixed;
-    color: #e4e4e7;
+    color: var(--text-main);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 button,
@@ -46,34 +46,50 @@ a{
     text-decoration:none;
 }
 
-/* Impede a rolagem da página quando o modal de produto estiver aberto */
 body.modal-open{
     overflow:hidden;
 }
 
 
 /* =====================================================
-   VARIÁVEIS DE CORES DO TEMA (Ajustadas para alto contraste e legibilidade)
+   VARIÁVEIS DE CORES E TEMAS (DARK & LIGHT)
 ===================================================== */
 
-:root{
-    --purple:#7c3aed;
-    --purple-dark:#5b21b6;
-    --purple-light:#a78bfa;
+:root {
+    /* Tema Escuro (Padrão) */
+    --bg-main: linear-gradient(135deg, #070714 0%, #0d0d26 50%, #150a2a 100%);
+    --header-bg: rgba(13, 13, 26, 0.85);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.12);
+    --text-main: #e4e4e7;
+    --text-muted: #a1a1aa;
+    --text-title: #ffffff;
+    --modal-bg: #0d0d1e;
+    --input-bg: rgba(255, 255, 255, 0.08);
 
-    --black:#05050a;
-    --dark:#0d0d1a;
+    --purple: #7c3aed;
+    --purple-dark: #5b21b6;
+    --purple-light: #a78bfa;
+    --border: rgba(255, 255, 255, 0.12);
+}
 
-    --gray:#a1a1aa;
-    --light:#f4f4f5;
-
-    --border:rgba(255, 255, 255, 0.12);
-    --card-bg:rgba(255, 255, 255, 0.04);
+body.light-theme {
+    /* Tema Claro */
+    --bg-main: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+    --header-bg: rgba(255, 255, 255, 0.85);
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --text-main: #334155;
+    --text-muted: #64748b;
+    --text-title: #0f172a;
+    --modal-bg: #ffffff;
+    --input-bg: rgba(0, 0, 0, 0.05);
+    --border: rgba(0, 0, 0, 0.1);
 }
 
 
 /* =====================================================
-   CABEÇALHO (HEADER) - Legibilidade Corrigida
+   CABEÇALHO (HEADER) - AJUSTADO PARA OCUPAR TODO O ESPAÇO
 ===================================================== */
 
 .header{
@@ -82,34 +98,34 @@ body.modal-open{
     left:0;
     width:100%;
     height:76px;
-    background:rgba(13, 13, 26, 0.85);
+    background: var(--header-bg);
     backdrop-filter:blur(18px);
     border-bottom:1px solid var(--border);
     z-index:1000;
+    transition: background 0.3s ease;
 }
 
 .header-container{
-    max-width:1250px;
+    max-width: 100%; /* Ocupa toda a largura do container */
     height:100%;
     margin:auto;
-    padding:0 25px;
+    padding:0 30px; /* Alinhado ao canto com margem de respiro */
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
-/* Logo da loja no topo */
 .logo{
     font-size:24px;
     font-weight:900;
-    color:#ffffff;
+    color: var(--text-title);
     display:flex;
     align-items:center;
     gap:8px;
 }
 
 .logo span{
-    color:var(--purple-light);
+    color:var(--purple);
 }
 
 .logo-wolf{
@@ -118,39 +134,86 @@ body.modal-open{
 
 .nav{
     display:flex;
-    gap:30px;
+    gap:25px;
+    margin-left: 40px; /* Dá espaço após a logo */
 }
 
 .nav a{
-    color:#d4d4d8;
+    color: var(--text-main);
     font-size:14px;
     font-weight:600;
     transition:.3s;
 }
 
 .nav a:hover{
-    color:var(--purple-light);
+    color:var(--purple);
 }
 
 .header-actions{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:15px;
+    margin-left: auto; /* Empurra todo o bloco de busca, tema, WhatsApp e carrinho para o canto direito */
 }
 
-.search-button{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    border:1px solid var(--border);
-    background:rgba(255,255,255,0.08);
-    color:white;
-    font-size:18px;
-    transition:.3s;
+
+/* =====================================================
+   BARRA DE BUSCA EM TEMPO REAL
+===================================================== */
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-.search-button:hover{
-    background:rgba(255,255,255,0.2);
+.search-input {
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 8px 15px 8px 35px;
+    color: var(--text-title);
+    font-size: 13px;
+    outline: none;
+    width: 160px;
+    transition: width 0.3s ease, border-color 0.3s ease;
+}
+
+.search-input:focus {
+    width: 220px;
+    border-color: var(--purple);
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    font-size: 14px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   BOTÃO DE ALTERNÂNCIA DE TEMA
+===================================================== */
+
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--input-bg);
+    color: var(--text-title);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+}
+
+.theme-toggle:hover {
+    background: rgba(124, 58, 237, 0.2);
+    border-color: var(--purple);
 }
 
 
@@ -158,11 +221,10 @@ body.modal-open{
    CARRINHO E BOTÕES DO CABEÇALHO
 ===================================================== */
 
-/* Mantido o botão do Carrinho Laranja em Destaque */
 .cart-button{
     position:relative;
     height:42px;
-    padding:0 15px;
+    padding:0 18px;
     border:1px solid #ea580c;
     background:#f97316;
     border-radius:7px;
@@ -211,13 +273,13 @@ body.modal-open{
     display:none;
     border:0;
     background:none;
-    color:white;
+    color: var(--text-title);
     font-size:25px;
 }
 
 
 /* =====================================================
-   SEÇÃO INICIAL (HERO) - Degradê Fluido
+   SEÇÃO INICIAL (HERO)
 ===================================================== */
 
 .hero{
@@ -226,7 +288,7 @@ body.modal-open{
     background:
     radial-gradient(
         circle at 85% 40%,
-        rgba(124,58,237,.35),
+        rgba(124,58,237,.25),
         transparent 45%
     ),
     radial-gradient(
@@ -234,7 +296,7 @@ body.modal-open{
         rgba(249,115,22,.15),
         transparent 35%
     );
-    color:white;
+    color: var(--text-title);
     overflow:hidden;
 }
 
@@ -257,7 +319,7 @@ body.modal-open{
     border-radius:30px;
     background:rgba(124,58,237,.25);
     border:1px solid rgba(167,139,250,.4);
-    color:#c4b5fd;
+    color:var(--purple-light);
     font-size:12px;
     font-weight:bold;
     margin-bottom:25px;
@@ -268,15 +330,15 @@ body.modal-open{
     line-height:.98;
     letter-spacing:-4px;
     margin-bottom:25px;
-    color:#ffffff;
+    color: var(--text-title);
 }
 
 .hero h1 span{
-    color:var(--purple-light);
+    color:var(--purple);
 }
 
 .hero-description{
-    color:#a1a1aa;
+    color: var(--text-muted);
     font-size:17px;
     line-height:1.7;
     max-width:540px;
@@ -305,9 +367,9 @@ body.modal-open{
 }
 
 .secondary-button{
-    border:1px solid rgba(255,255,255,0.2);
-    background:rgba(255,255,255,0.05);
-    color:white;
+    border:1px solid var(--border);
+    background: var(--input-bg);
+    color: var(--text-title);
     padding:15px 25px;
     border-radius:6px;
     font-weight:bold;
@@ -315,7 +377,7 @@ body.modal-open{
 }
 
 .secondary-button:hover{
-    background:rgba(255,255,255,0.15);
+    background:rgba(124,58,237,0.15);
 }
 
 .hero-info{
@@ -324,11 +386,10 @@ body.modal-open{
 }
 
 .hero-info-item{
-    color:#a1a1aa;
+    color: var(--text-muted);
     font-size:13px;
 }
 
-/* Celular flutuante no Hero com o Logo do Lobo */
 .hero-product{
     position:relative;
     height:500px;
@@ -360,8 +421,8 @@ body.modal-open{
         #120a20 75%
     );
     box-shadow:
-    0 40px 100px rgba(0,0,0,.6),
-    0 0 80px rgba(124,58,237,.4);
+    0 40px 100px rgba(0,0,0,.4),
+    0 0 80px rgba(124,58,237,.3);
     transform:rotate(-7deg);
     animation:phoneFloat 5s ease-in-out infinite;
     display:flex;
@@ -369,7 +430,6 @@ body.modal-open{
     align-items:center;
 }
 
-/* Notação do celular */
 .big-phone::before{
     content:"";
     position:absolute;
@@ -382,7 +442,6 @@ body.modal-open{
     border-radius:0 0 15px 15px;
 }
 
-/* Logo do Lobo no Celular Flutuante */
 .phone-wolf-logo {
     font-size:80px;
     user-select:none;
@@ -407,7 +466,7 @@ body.modal-open{
     padding:35px 7%;
     border-top:1px solid var(--border);
     border-bottom:1px solid var(--border);
-    background:rgba(0,0,0,0.2);
+    background:rgba(0,0,0,0.05);
 }
 
 .brands-container{
@@ -420,7 +479,7 @@ body.modal-open{
 }
 
 .brand{
-    color:#a1a1aa;
+    color: var(--text-muted);
     font-size:19px;
     font-weight:800;
     letter-spacing:1px;
@@ -445,7 +504,7 @@ body.modal-open{
 }
 
 .section-title small{
-    color:var(--purple-light);
+    color:var(--purple);
     font-size:12px;
     font-weight:bold;
     letter-spacing:2px;
@@ -455,11 +514,11 @@ body.modal-open{
     font-size:45px;
     letter-spacing:-2px;
     margin-top:10px;
-    color:#ffffff;
+    color: var(--text-title);
 }
 
 .section-title p{
-    color:var(--gray);
+    color:var(--text-muted);
     margin-top:10px;
 }
 
@@ -479,8 +538,8 @@ body.modal-open{
     padding:10px 18px;
     border-radius:30px;
     border:1px solid var(--border);
-    background:rgba(255,255,255,0.05);
-    color:#e4e4e7;
+    background: var(--input-bg);
+    color: var(--text-main);
     font-size:13px;
     transition:.3s;
 }
@@ -504,10 +563,10 @@ body.modal-open{
 }
 
 .product{
-    border:1px solid var(--border);
+    border:1px solid var(--card-border);
     border-radius:16px;
     overflow:hidden;
-    background:rgba(255, 255, 255, 0.03);
+    background: var(--card-bg);
     backdrop-filter:blur(10px);
     transition:.4s ease;
     cursor:pointer;
@@ -517,13 +576,13 @@ body.modal-open{
 
 .product:hover{
     transform:translateY(-8px);
-    border-color:rgba(167, 139, 250, 0.4);
-    box-shadow:0 20px 40px rgba(0,0,0,.5), 0 0 20px rgba(124, 58, 237, 0.2);
+    border-color:var(--purple-light);
+    box-shadow:0 20px 40px rgba(0,0,0,.15), 0 0 20px rgba(124, 58, 237, 0.15);
 }
 
 .product-image{
     height:260px;
-    background:rgba(0, 0, 0, 0.25);
+    background:rgba(0, 0, 0, 0.05);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -558,7 +617,7 @@ body.modal-open{
     font-size:10px;
     font-weight:bold;
     z-index:2;
-    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
 }
 
 .product-content{
@@ -570,7 +629,7 @@ body.modal-open{
 }
 
 .product-brand{
-    color:var(--purple-light);
+    color:var(--purple);
     text-transform:uppercase;
     font-size:11px;
     font-weight:bold;
@@ -579,12 +638,12 @@ body.modal-open{
 
 .product-name{
     font-size:18px;
-    color:#ffffff;
+    color: var(--text-title);
     margin:6px 0;
 }
 
 .product-spec{
-    color:#a1a1aa;
+    color: var(--text-muted);
     font-size:12px;
 }
 
@@ -594,16 +653,15 @@ body.modal-open{
     justify-content:space-between;
     margin-top:20px;
     padding-top:15px;
-    border-top:1px solid rgba(255,255,255,0.06);
+    border-top:1px solid var(--border);
 }
 
 .product-price{
     font-size:20px;
     font-weight:800;
-    color:#ffffff;
+    color: var(--text-title);
 }
 
-/* Botão Laranja mantido nos cards */
 .product-buy{
     width:44px;
     height:44px;
@@ -624,13 +682,20 @@ body.modal-open{
     transform:scale(1.08);
 }
 
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+}
+
 
 /* =====================================================
    BENEFÍCIOS
 ===================================================== */
 
 .benefits{
-    background:rgba(0,0,0,0.15);
+    background:rgba(0,0,0,0.03);
 }
 
 .benefit-grid{
@@ -640,7 +705,7 @@ body.modal-open{
 }
 
 .benefit{
-    background:rgba(255,255,255,0.03);
+    background: var(--card-bg);
     border:1px solid var(--border);
     border-radius:14px;
     padding:35px 25px;
@@ -651,7 +716,7 @@ body.modal-open{
     height:45px;
     border-radius:10px;
     background:rgba(124,58,237,0.2);
-    color:var(--purple-light);
+    color:var(--purple);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -661,12 +726,12 @@ body.modal-open{
 
 .benefit h3{
     font-size:17px;
-    color:#ffffff;
+    color: var(--text-title);
     margin-bottom:10px;
 }
 
 .benefit p{
-    color:#a1a1aa;
+    color: var(--text-muted);
     font-size:13px;
     line-height:1.6;
 }
@@ -756,11 +821,11 @@ body.modal-open{
     font-size:16px;
     font-weight:bold;
     text-align:left;
-    color:#ffffff;
+    color: var(--text-title);
 }
 
 .faq-question span{
-    color:var(--purple-light);
+    color:var(--purple);
 }
 
 .faq-answer{
@@ -770,7 +835,7 @@ body.modal-open{
 }
 
 .faq-answer p{
-    color:#a1a1aa;
+    color: var(--text-muted);
     font-size:14px;
     line-height:1.7;
     padding-bottom:20px;
@@ -911,11 +976,11 @@ footer a:hover{
     width:min(1000px,100%);
     max-height:90vh;
     overflow:auto;
-    background:#0d0d1e;
+    background: var(--modal-bg);
     border:1px solid var(--border);
     border-radius:18px;
     position:relative;
-    color:white;
+    color: var(--text-title);
     animation:modalIn .3s ease;
 }
 
@@ -938,15 +1003,15 @@ footer a:hover{
     height:40px;
     border-radius:50%;
     border:0;
-    background:rgba(255,255,255,0.1);
-    color:white;
+    background:rgba(0,0,0,0.1);
+    color: var(--text-title);
     font-size:20px;
     z-index:5;
     transition:.3s;
 }
 
 .close-modal:hover{
-    background:rgba(255,255,255,0.25);
+    background:rgba(0,0,0,0.25);
 }
 
 .modal-content{
@@ -956,7 +1021,7 @@ footer a:hover{
 
 .modal-image{
     min-height:560px;
-    background:rgba(0,0,0,0.3);
+    background:rgba(0,0,0,0.05);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -978,7 +1043,7 @@ footer a:hover{
 }
 
 .modal-brand{
-    color:var(--purple-light);
+    color:var(--purple);
     font-size:12px;
     font-weight:bold;
     text-transform:uppercase;
@@ -989,11 +1054,11 @@ footer a:hover{
     font-size:38px;
     margin:10px 0;
     letter-spacing:-1px;
-    color:#ffffff;
+    color: var(--text-title);
 }
 
 .modal-info p{
-    color:#a1a1aa;
+    color: var(--text-muted);
     line-height:1.6;
 }
 
@@ -1001,7 +1066,7 @@ footer a:hover{
     font-size:30px;
     font-weight:900;
     margin:20px 0 30px;
-    color:#ffffff;
+    color: var(--text-title);
 }
 
 .spec-list{
@@ -1012,15 +1077,15 @@ footer a:hover{
 }
 
 .spec{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.08);
+    background: var(--input-bg);
+    border:1px solid var(--border);
     padding:14px;
     border-radius:8px;
 }
 
 .spec small{
     display:block;
-    color:#a1a1aa;
+    color: var(--text-muted);
     font-size:10px;
     text-transform:uppercase;
     margin-bottom:5px;
@@ -1028,7 +1093,7 @@ footer a:hover{
 
 .spec strong{
     font-size:13px;
-    color:#ffffff;
+    color: var(--text-title);
 }
 
 .modal-buttons{
@@ -1090,9 +1155,9 @@ footer a:hover{
     right:0;
     width:min(450px,100%);
     height:100%;
-    background:#0d0d1e;
+    background: var(--modal-bg);
     border-left:1px solid var(--border);
-    color:white;
+    color: var(--text-title);
     display:flex;
     flex-direction:column;
     animation:cartIn .3s ease;
@@ -1144,7 +1209,7 @@ footer a:hover{
 .empty-cart{
     text-align:center;
     padding:70px 20px;
-    color:#a1a1aa;
+    color: var(--text-muted);
 }
 
 .empty-cart-icon{
@@ -1164,7 +1229,7 @@ footer a:hover{
 .cart-item-image{
     width:75px;
     height:75px;
-    background:rgba(255,255,255,0.05);
+    background:rgba(0,0,0,0.05);
     border-radius:8px;
     display:flex;
     align-items:center;
@@ -1186,11 +1251,11 @@ footer a:hover{
     font-weight:bold;
     font-size:14px;
     margin-bottom:5px;
-    color:#ffffff;
+    color: var(--text-title);
 }
 
 .cart-item-price{
-    color:#a1a1aa;
+    color: var(--text-muted);
     font-size:12px;
 }
 
@@ -1205,8 +1270,8 @@ footer a:hover{
     width:25px;
     height:25px;
     border:1px solid var(--border);
-    background:rgba(255,255,255,0.1);
-    color:white;
+    background: var(--input-bg);
+    color: var(--text-title);
     border-radius:4px;
 }
 
@@ -1237,7 +1302,7 @@ footer a:hover{
 
 .cart-total strong{
     font-size:22px;
-    color:#ffffff;
+    color: var(--text-title);
 }
 
 .checkout-button{
@@ -1262,7 +1327,7 @@ footer a:hover{
     padding:10px;
     border:0;
     background:none;
-    color:#a1a1aa;
+    color: var(--text-muted);
     font-size:12px;
 }
 
@@ -1299,8 +1364,8 @@ footer a:hover{
     width:42px;
     height:42px;
     border-radius:50%;
-    background:rgba(255,255,255,0.1);
-    color:white;
+    background: var(--input-bg);
+    color: var(--text-title);
     border:1px solid var(--border);
     opacity:0;
     pointer-events:none;
@@ -1379,6 +1444,12 @@ footer a:hover{
 }
 
 @media(max-width:600px){
+    .search-input {
+        width: 120px;
+    }
+    .search-input:focus {
+        width: 150px;
+    }
     .hero{
         padding-top:120px;
     }
@@ -1470,12 +1541,12 @@ footer a:hover{
 <header class="header">
     <div class="header-container">
 
-        <!-- Logo com Ícone de Lobo -->
+        <!-- Logo -->
         <a href="#inicio" class="logo">
             <span class="logo-wolf">🐺</span> Fenrir <span>Store</span>
         </a>
 
-        <!-- Menu de Navegação (Links sem Avaliações) -->
+        <!-- Menu de Navegação -->
         <nav class="nav">
             <a href="#inicio">Início</a>
             <a href="#produtos">Celulares</a>
@@ -1483,24 +1554,36 @@ footer a:hover{
             <a href="#faq">Dúvidas</a>
         </nav>
 
-        <!-- Ações do Cabeçalho -->
+        <!-- Ações do Cabeçalho (Alinhadas ao canto direito extremo) -->
         <div class="header-actions">
 
-            <!-- Botão de Busca -->
-            <button class="search-button" onclick="focarBusca()" title="Buscar Celular">
-                ⌕
-            </button>
+            <!-- Campo de Busca em Tempo Real -->
+            <div class="search-box">
+                <span class="search-icon">⌕</span>
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="searchInput" 
+                    placeholder="Buscar celular..." 
+                    oninput="buscarProdutos(this.value)"
+                >
+            </div>
 
-            <!-- Botão do Carrinho (Laranja) -->
-            <button class="cart-button" onclick="abrirCarrinho()">
-                🛒
-                <span class="cart-text">Carrinho</span>
-                <span class="cart-count" id="cartCount">0</span>
+            <!-- Botão Alternar Tema (White / Black) -->
+            <button class="theme-toggle" id="themeToggle" onclick="alternarTema()" title="Alternar Tema">
+                🌙
             </button>
 
             <!-- Botão WhatsApp -->
             <button class="header-button" onclick="abrirWhatsApp()">
                 WhatsApp
+            </button>
+
+            <!-- Botão do Carrinho (No Canto Direito) -->
+            <button class="cart-button" onclick="abrirCarrinho()">
+                🛒
+                <span class="cart-text">Carrinho</span>
+                <span class="cart-count" id="cartCount">0</span>
             </button>
 
             <!-- Botão do Menu Mobile -->
@@ -1520,7 +1603,6 @@ footer a:hover{
 <section class="hero" id="inicio">
     <div class="hero-container">
 
-        <!-- Texto principal do topo -->
         <div class="hero-content">
             <div class="hero-tag">
                 ● Novidades disponíveis
@@ -1552,7 +1634,6 @@ footer a:hover{
             </div>
         </div>
 
-        <!-- Celular Flutuante com o Logo do Lobo no Centro -->
         <div class="hero-product">
             <div class="glow"></div>
             <div class="big-phone">
@@ -1580,7 +1661,7 @@ footer a:hover{
 
 
 <!-- =====================================================
-     SEÇÃO DE PRODUTOS / CATÁLOGO (Mosaico)
+     SEÇÃO DE PRODUTOS / CATÁLOGO
 ===================================================== -->
 
 <section class="section" id="produtos">
@@ -1594,7 +1675,7 @@ footer a:hover{
             </div>
         </div>
 
-        <!-- Botões de Filtro por Marca -->
+        <!-- Botões de Filtro -->
         <div class="filters">
             <button class="filter active" onclick="filtrar('todos',this)">Todos</button>
             <button class="filter" onclick="filtrar('apple',this)">Apple</button>
@@ -1603,7 +1684,7 @@ footer a:hover{
             <button class="filter" onclick="filtrar('motorola',this)">Motorola</button>
         </div>
 
-        <!-- Mosaico de produtos estilo Grid -->
+        <!-- Grid de Produtos -->
         <div class="products" id="products"></div>
 
     </div>
@@ -1750,7 +1831,6 @@ footer a:hover{
     <div class="footer-grid">
 
         <div>
-            <!-- Logo no rodapé com ícone de lobo -->
             <div class="footer-logo">
                 <span>🐺</span> Fenrir <span>Store</span>
             </div>
@@ -1865,17 +1945,14 @@ footer a:hover{
      ELEMENTOS FLUTUANTES E TOAST
 ===================================================== -->
 
-<!-- Botão WhatsApp Flutuante -->
 <a href="https://wa.me/5561998120366" target="_blank" class="whatsapp" title="Falar no WhatsApp">
     💬
 </a>
 
-<!-- Botão Voltar ao Topo -->
 <button class="top" id="top" onclick="topo()" title="Voltar ao topo">
     ↑
 </button>
 
-<!-- Mensagem Flutuante Toast -->
 <div class="toast" id="toast">
     Produto adicionado ao carrinho!
 </div>
@@ -1888,10 +1965,9 @@ footer a:hover{
 <script>
 
 /* =====================================================
-   CONFIGURAÇÕES GERAIS
+   CONFIGURAÇÕES GERAIS E WHATSAPP
 ===================================================== */
 
-// Número oficial para envio de mensagens via WhatsApp (apenas números com DDD)
 const WHATSAPP = "5561998120366";
 
 
@@ -2061,6 +2137,38 @@ const produtos = [
 
 let carrinho = JSON.parse(localStorage.getItem("fenrirCarrinho")) || [];
 let produtoSelecionado = null;
+let filtroCategoriaAtual = "todos";
+
+
+/* =====================================================
+   GERENCIAMENTO DE TEMA (WHITE / BLACK)
+===================================================== */
+
+function inicializarTema() {
+    const temaSalvo = localStorage.getItem("fenrirTema");
+    const toggleBtn = document.getElementById("themeToggle");
+
+    if (temaSalvo === "light") {
+        document.body.classList.add("light-theme");
+        toggleBtn.textContent = "☀️";
+    } else {
+        document.body.classList.remove("light-theme");
+        toggleBtn.textContent = "🌙";
+    }
+}
+
+function alternarTema() {
+    const isLight = document.body.classList.toggle("light-theme");
+    const toggleBtn = document.getElementById("themeToggle");
+
+    if (isLight) {
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("fenrirTema", "light");
+    } else {
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("fenrirTema", "dark");
+    }
+}
 
 
 /* =====================================================
@@ -2076,12 +2184,22 @@ function formatarPreco(valor){
 
 
 /* =====================================================
-   FUNÇÃO PARA EXIBIR/RENDERIZAR OS PRODUTOS NA TELA
+   EXIBIÇÃO / RENDERIZAÇÃO DOS PRODUTOS
 ===================================================== */
 
 function renderizarProdutos(lista = produtos){
     const container = document.getElementById("products");
     container.innerHTML = "";
+
+    if (lista.length === 0) {
+        container.innerHTML = `
+            <div class="no-results">
+                <h3>Nenhum aparelho encontrado</h3>
+                <p>Tente buscar por outro termo ou selecione outra marca.</p>
+            </div>
+        `;
+        return;
+    }
 
     lista.forEach(produto => {
         const card = document.createElement("div");
@@ -2131,6 +2249,33 @@ function renderizarProdutos(lista = produtos){
 
         container.appendChild(card);
     });
+}
+
+
+/* =====================================================
+   SISTEMA DE BUSCA EM TEMPO REAL E FILTROS
+===================================================== */
+
+function buscarProdutos(termo) {
+    termo = termo.toLowerCase().trim();
+
+    const produtosFiltrados = produtos.filter(produto => {
+        const atendeCategoria = (filtroCategoriaAtual === "todos" || produto.categoria === filtroCategoriaAtual);
+        const atendeBusca = produto.nome.toLowerCase().includes(termo) || produto.marca.toLowerCase().includes(termo);
+        return atendeCategoria && atendeBusca;
+    });
+
+    renderizarProdutos(produtosFiltrados);
+}
+
+function filtrar(marca, botao){
+    document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+    botao.classList.add("active");
+
+    filtroCategoriaAtual = marca;
+    const termoBusca = document.getElementById("searchInput").value;
+
+    buscarProdutos(termoBusca);
 }
 
 
@@ -2385,38 +2530,6 @@ function abrirWhatsApp(){
 
 
 /* =====================================================
-   FILTROS E BUSCA
-===================================================== */
-
-function filtrar(marca, botao){
-    document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
-    botao.classList.add("active");
-
-    if(marca === "todos"){
-        renderizarProdutos(produtos);
-        return;
-    }
-
-    renderizarProdutos(produtos.filter(produto => produto.categoria === marca));
-}
-
-function focarBusca(){
-    const termo = prompt("Digite o nome do celular:");
-    if(!termo) return;
-
-    const resultado = produtos.find(produto => 
-        produto.nome.toLowerCase().includes(termo.toLowerCase())
-    );
-
-    if(resultado){
-        abrirProduto(resultado.id);
-    } else {
-        alert("Não encontramos esse aparelho. Tente outro modelo.");
-    }
-}
-
-
-/* =====================================================
    FUNÇÕES AUXILIARES E NAVEGAÇÃO
 ===================================================== */
 
@@ -2462,7 +2575,7 @@ function toggleMenu(){
         nav.style.left = "0";
         nav.style.width = "100%";
         nav.style.padding = "20px";
-        nav.style.background = "#0d0d1e";
+        nav.style.background = "var(--modal-bg)";
         nav.style.flexDirection = "column";
     }
 }
@@ -2480,6 +2593,7 @@ function mostrarToast(texto){
    INICIALIZAÇÃO DO SISTEMA
 ===================================================== */
 
+inicializarTema();
 renderizarProdutos();
 atualizarCarrinho();
 
